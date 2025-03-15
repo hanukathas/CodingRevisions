@@ -17,4 +17,5 @@ def unique_paths(n, m):
     return dp[n - 1][m - 1]
 
 if __name__ == '__main__':
-    print(unique_paths(1000,1000))
+    print(unique_paths(6,1))
+
