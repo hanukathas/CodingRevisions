@@ -6,5 +6,7 @@ def minimum_coins(coins, value):
             if coin <= i:
                 dp[i] = min(dp[i], dp[i-coin]+1)
     return dp[value] if dp[value] != float('inf') else -1
+
+ 
 if __name__ == '__main__':
-    print(minimum_coins([2,3,5], 1))
+    print(minimum_coins([2,3,5], 10))
