@@ -1,10 +1,8 @@
 def fruits_into_baskets(arr: list):
     max_size = 0
-    window = 0
     hmap = {}
     left = 0
     for i in range(len(arr)):
-        window += 1
         if arr[i] in hmap:
             hmap[arr[i]] += 1
         else:

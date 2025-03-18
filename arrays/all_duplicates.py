@@ -13,4 +13,4 @@ def all_duplicates(arr: list):
     return result
 
 if __name__ == '__main__':
-    print(all_duplicates([1,2,3,4]))
+    print(all_duplicates([1,2,4,3,4]))
