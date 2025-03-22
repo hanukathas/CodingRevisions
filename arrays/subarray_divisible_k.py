@@ -11,16 +11,18 @@ def subarray_divisible_k(arr, k):
     for num in arr:
         prefix_sum = (prefix_sum + num)
         rem = prefix_sum % k
+        print(prefix_sum, rem)
         if rem in hmap:
             total += hmap[rem]
         if rem not in hmap:
             hmap[rem] = 1
         else:
             hmap[rem] += 1
+        print(hmap)
     return  total
 
 if __name__ == '__main__':
-    print(subarray_divisible_k([4, 5, 0, -2, -3, 1], 5))
+    print(subarray_divisible_k([5,4,5], 5))
 
 
 
