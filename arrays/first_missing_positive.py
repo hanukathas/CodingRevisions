@@ -18,5 +18,5 @@ def first_missing_positive(arr: list):
 
 
 if __name__ == '__main__':
-    print(first_missing_positive([3,4,-1,1]))
+    print(first_missing_positive([3,5,-1,1]))
     print()

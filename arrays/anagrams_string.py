@@ -35,3 +35,4 @@ def anagrams_string(str1, str2):
 
 if __name__ == '__main__':
     print(anagrams_string("el", "hellelo"))
+    print(anagrams_string("ll", "hellelo"))

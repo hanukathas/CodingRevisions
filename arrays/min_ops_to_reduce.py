@@ -19,4 +19,4 @@ def min_ops_to_reduce(arr: list, k: int):
 
 
 if __name__ == '__main__':
-    print(min_ops_to_reduce([9], 10))
+    print(min_ops_to_reduce([9], 5))

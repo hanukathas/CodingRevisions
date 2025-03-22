@@ -15,5 +15,5 @@ def majority_element(arr: list):
     return list(hmap.keys())[0]
 
 if __name__ == '__main__':
-    print(majority_element([1,1,1,0,0,0,5,5,5,5,5,5,5]))
+    print(majority_element([1,1,1,0,7,0,5,5,5,5,5,5,5]))
 
