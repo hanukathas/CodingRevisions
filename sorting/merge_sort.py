@@ -55,10 +55,38 @@ def merge(left, right):
 
     return result
 
+def merge_sort_revision(arr: [])-> list:
+    if len(arr) <= 1:
+        return arr
+    else:
+        mid = len(arr) // 2
+        left = arr[:mid]
+        right = arr[mid:]
+
+        left_merge = merge_sort_revision(left)
+        right_merge = merge_sort_revision(right)
+
+        return merge_revision(left_merge, right_merge)
+
+def merge_revision(left: [], right:[]) -> list:
+    i = j = 0
+    result = list()
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+
 
 # Example usage
 if __name__ == "__main__":
     arr = [38, 27, 43, 3, 9, 82, 10]
-    sorted_arr = merge_sort(arr)
+    sorted_arr = merge_sort_revision(arr)
     print(f"Original array: {arr}")
     print(f"Sorted array: {sorted_arr}")
