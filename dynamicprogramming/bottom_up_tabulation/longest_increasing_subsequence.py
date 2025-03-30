@@ -18,6 +18,22 @@ def longest_increasing_subsequence_revision(arr):
                 dp[i] = max(dp[i], dp[j] + 1)
     return max(dp)
 
+def longest_increasing_subsequence_revision_2(arr):
+    """
+    define the dp table
+    define the base case
+    :param arr:
+    :return:
+    """
+    dp = [1] * len(arr)
+    n = len(arr)
+    for i in range(1, n):
+        for j in range(i):
+            if arr[j] < arr[i]:
+                dp[i] = max(dp[i], dp[j] + 1)
+    return max(dp)
+
+
 if __name__ == '__main__':
     print(longest_increasing_subsequence(test1))
-    print(longest_increasing_subsequence_revision(test1))
+    print(longest_increasing_subsequence_revision_2(test1))
