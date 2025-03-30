@@ -36,9 +36,30 @@ def lcs_bottom_up_revision(str1, str2):
                 dp[i][j] = max(dp[i-1][j], dp[i][j-1])
     return dp[m][n]
 
+def lcs_bottom_up_revision_2(str1, str2):
+    """
+    first step is to set up the table
+    second step is the base condition
+    third is the calculation for m, n when m-1, n-1 are calculated
+    loops always for the next element, looking at the prev element
+    :param str1:
+    :param str2:
+    :return:
+    """
+    m = len(str1)
+    n = len(str2)
+    dp = [[0] * (n+1) for _ in range(m+1)]
+    for i in range(1, m+1):
+        for j in range(1, n+1):
+            if str1[i-1] == str2[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1]) #which ever has a higher match coefficient
+    return dp[m][n]
+
 
 if __name__ == '__main__':
     # print(lcs_bottom_up("hello", "ell"))
-    print(lcs_bottom_up_copy("hello", "ell"))
-    print(lcs_bottom_up_revision("hello", "ell"))
+    print(lcs_bottom_up_copy("hello", "h"))
+    print(lcs_bottom_up_revision_2("hello", "h"))
 
