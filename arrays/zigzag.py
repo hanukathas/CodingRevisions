@@ -9,6 +9,18 @@ def zigzag(arr: list):
 
     return arr
 
+def zigzag_revision(arr: list):
+    for i in range(1, len(arr)):
+        if i % 2 == 0:
+            if arr[i-1] <= arr[i]:
+                arr[i-1], arr[i] = arr[i], arr[i-1]
+        else:
+            if arr[i-1] > arr[i]:
+                arr[i-1], arr[i] = arr[i], arr[i-1]
+
+    return arr
+
+
 
 def longestRepeatedSubstring(s: str) -> str:
     n = len(s)
@@ -39,5 +51,5 @@ def longestRepeatedSubstring(s: str) -> str:
 
 
 if __name__ == '__main__':
-    print(zigzag([10,9,8,7,6,5,4,3,2,1]))
+    print(zigzag_revision([10,9,8,7,6,5,4,3,2,1]))
 
