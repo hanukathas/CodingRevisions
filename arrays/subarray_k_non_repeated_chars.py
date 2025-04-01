@@ -1,4 +1,4 @@
-def subarray_k_non_repeated_chars(s: list, k: int) -> int:
+def subarray_k_non_repeated_chars(s: str, k: int) -> int:
     hmap = {}
     total = 0
     if len(s) < k:
@@ -27,7 +27,7 @@ def subarray_k_non_repeated_chars(s: list, k: int) -> int:
     return total
 
 if __name__ == '__main__':
-    print(subarray_k_non_repeated_chars("home", 5))
+    print(subarray_k_non_repeated_chars("home", 4))
 
 
 
