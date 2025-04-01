@@ -7,7 +7,7 @@ def fruits_into_baskets(arr: list):
             hmap[arr[i]] += 1
         else:
             hmap[arr[i]] = 1
-        while left <= 1 and len(hmap) > 0:
+        while left <= 1 and len(hmap) > 2:
             hmap[arr[left]] -= 1
             if hmap[arr[left]] == 0:
                 hmap.pop(arr[left])
@@ -15,6 +15,24 @@ def fruits_into_baskets(arr: list):
         max_size = max(max_size, i-left + 1)
     return max_size
 
+def fruits_into_baskets_revision(arr: list):
+    max_size = 0
+    left = 0
+    hmap = {}
+    for i in range(len(arr)):
+        hmap[arr[i]] = 1 + hmap.get(arr[i], 0)
+        while len(hmap) > 2:
+            if arr[left] in hmap:
+                hmap[arr[left]] -= 1
+                if hmap[arr[left]] == 0:
+                    hmap.pop(arr[left])
+            left += 1
+        max_size = max(max_size, i - left + 1)
+    return max_size
+
+
+
 if __name__ == '__main__':
-    print(fruits_into_baskets([0,1,2,2,1,3,0]))
+    print(fruits_into_baskets([1,2,1]))
+    print(fruits_into_baskets_revision([1, 2, 3, 2, 2]))
 

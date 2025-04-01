@@ -1,15 +1,16 @@
-def max_area_container(arr: list):
-    max_area = 0
-    i = 0
-    j = len(arr) - 1
-    while i < j:
-        area = (j-1) * min(arr[i], arr[j])
-        max_area = max(max_area, area)
-        if arr[i] <= arr[j]:
-            i += 1
+def max_area_container_revision(height: list):
+    left = 0
+    right = len(height) - 1
+    max_vol = 0
+    while left < right:
+        vol = (right - left)  * min(height[left], height[right])
+        max_vol = max(max_vol, vol)
+        if height[left] <= height[right]:
+            left += 1
         else:
-            j -= 1
-    return max_area
+            right -= 1
+    return max_vol
+
 
 if __name__ == '__main__':
-    print(max_area_container([4,3,20,3,20,10]))
+    print(max_area_container_revision([4,3,2,1,4]))
