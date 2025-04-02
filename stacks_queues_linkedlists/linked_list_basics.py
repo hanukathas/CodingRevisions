@@ -4,9 +4,9 @@ from tempfile import tempdir
 
 
 class Node:
-    def __init__(self, data):
+    def __init__(self, data, next=None):
         self.data = data
-        self.next = None
+        self.next = next
 
 class LinkedList:
     def __init__(self):
