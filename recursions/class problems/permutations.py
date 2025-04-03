@@ -62,11 +62,27 @@ def permutations_mutable_all_in_revision(arr: list):
                     helper(ip, i + 1)
                     ip[pick], ip[i] = ip[i], ip[pick]
 
-
-
-
     helper(arr, 0)
     return result
+
+def permutations_mutable_all_in_revision2(arr: list):
+    result = []
+    def helper(qwe: list, i: int):
+        if i == len(qwe):
+            result.append(qwe[:])
+            return
+        else:
+            hmap = {}
+            for pick in range(i, len(qwe)):
+                if qwe[pick] not in hmap:
+                    hmap[qwe[pick]] = 1
+                    qwe[pick], qwe[i] = qwe[i], qwe[pick]
+                    helper(qwe, i + 1)
+                    qwe[pick], qwe[i] = qwe[i], qwe[pick]
+    helper(qwe=arr, i=0)
+    return result
+
+
 
 
 def permutations_mutable_non_distinct_numbers(arr: list):
@@ -98,4 +114,4 @@ if __name__ == '__main__':
     print(permutations_immutable_revision([1,2,3]))
     print(permutations_mutable([1, 2, 3]))
     print(permutations_mutable_all_in_revision([1, 2, 3]))
-    print(permutations_mutable_all_in_revision([1, 1, 3]))
+    print(permutations_mutable_all_in_revision2([1, 1, 3]))

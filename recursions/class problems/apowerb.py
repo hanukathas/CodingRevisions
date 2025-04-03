@@ -1,6 +1,3 @@
-from pickletools import long4
-
-
 def calculate_power(a,b):
     MOD = 1000000007
     result = 1
@@ -18,7 +15,15 @@ def calculate_power(a,b):
 
     return result
 
-
+def calculate_power_revision(a,b):
+    result = 1
+    base = a
+    while b > 0:
+        if b % 2 == 1:
+            result = result * base
+        base = base * base
+        b = b // 2
+    return result
 
 if __name__ == '__main__':
-    print(calculate_power(2,10))
+    print(calculate_power_revision(2,10))
