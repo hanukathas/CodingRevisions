@@ -24,17 +24,17 @@ def generate_parenthesis_revision(n):
         if nleft == nright == 0:
             result.append(slate[:])
             return
-        if nleft < nright or nright < nleft or nleft < 0 or nright < 0:
+        if nleft == 0 or nright == 0 or nright < nleft or nleft < nright:
             return
-        slate.append('{')
-        helper(nleft+1, nright, slate)
+        slate.append("{")
+        helper(nleft-1, nright, slate)
         slate.pop()
 
-        slate.append('{')
-        helper(nleft+1, nright, slate)
+        slate.append("}")
+        helper(nleft, nright-1, slate)
         slate.pop()
 
-    helper(n, n, [])
+    helper(n,n, [])
     return result
 
 

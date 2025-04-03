@@ -1,3 +1,6 @@
+from stacks_queues_linkedlists.reverse_subset_llist import reverse_subset_llist
+
+
 def subsets_distinct_integers_immutable(S: list):
     result = list()
 
@@ -25,15 +28,14 @@ def subsets_distinct_integers_mutable(S: list):
     helper(S, 0, [])
     return result
 
-def subsets_distinct_integers_mutable_revision(S: list):
-    result = []
+def subsets_distinct_integers_mutable_revision(arr):
+    result = list()
     def helper(i, slate):
-        if i == len(S):
+        if i == len(arr):
             result.append(slate[:])
             return
-
         helper(i+1, slate)
-        slate.append(S[i])
+        slate.append(arr[i])
         helper(i + 1, slate)
         slate.pop()
     helper(0, [])

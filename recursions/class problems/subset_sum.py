@@ -16,8 +16,7 @@ def subset_sum_equals_k(arr: list, k: int):
         return helper(ip, i+1, slate, slatesum) + helper(ip, i+1, slate + [ip[i]], slatesum+ip[i])
     helper(arr, 0, [], 0)
     return result
-
-def subset_sum_equals_k_revision(arr: list, k: int):
+def subset_sum_equals_k_revision(arr, k):
     result = []
     def helper(ip, i, slate, slatesum):
         if slatesum == k:
@@ -25,11 +24,12 @@ def subset_sum_equals_k_revision(arr: list, k: int):
             return 1
         if slatesum > k:
             return 0
+        if len(slate) == len(ip):
+            return 0
         if i == len(ip):
             return 0
-        else:
-            return helper(ip, i+1, slate, slatesum) + helper(ip, i+1, slate+[ip[i]], slatesum+ip[i])
-    helper(arr, 0, [], 0)
+        return helper(ip, i+1, slate, slatesum) + helper(ip, i+1, slate+[arr[i]], slatesum+arr[i])
+    helper(arr, 0,[],0)
     return result
 
 
