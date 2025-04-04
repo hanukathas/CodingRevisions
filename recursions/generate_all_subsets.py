@@ -27,5 +27,5 @@ def generate_helper_revision(ip:str , result: list, subset:str):
 
 
 if __name__ == '__main__':
-    print(generate_all_subsets("xyz"))
+    print(generate_all_subsets("dc"))
 
