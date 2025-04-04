@@ -1,4 +1,4 @@
-test1 = [4, 2]
+test1 = [5, 2]
 
 
 def combination_simple(n, k):
@@ -14,6 +14,20 @@ def combination_simple(n, k):
             slate.pop()
 
     helper(n, 1, [])
+    return result
+
+def combination_simple_revision(n, k):
+    result = []
+    def helper(i: int, slate: list):
+        if len(slate) == k:
+            result.append(slate[:])
+            return
+        else:
+            for pick in range(i, n+1):
+                slate.append(pick)
+                helper(i+1, slate)
+                slate.pop()
+    helper(1,[])
     return result
 
 
@@ -35,12 +49,24 @@ def generate_combinations(arr, k):
     return include_first + exclude_first
 
 
-# Example usage
+def generate_combinations_revision(arr, k):
+    if k == 0:
+        return [[]]
+    if len(arr) < k:
+        return []
+
+    first = arr[0]
+    exclude_first = generate_combinations(arr[1:], k)
+    include_first = [[first] + comb for comb in generate_combinations(arr[1:], k-1)]
+
+    return include_first + exclude_first
+
 
 
 
 if __name__ == '__main__':
-    print(combination_simple(test1[0], test1[1]))
+    # print(combination_simple(test1[0], test1[1]))
+    # print(combination_simple_revision(test1[0], test1[1]))
     arr = [i + 1 for i in range(test1[0])]
-    print(arr)
-    print(generate_combinations(arr, test1[1]))
+
+    print(generate_combinations_revision(arr, test1[1]))

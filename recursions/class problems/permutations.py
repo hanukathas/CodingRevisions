@@ -67,51 +67,49 @@ def permutations_mutable_all_in_revision(arr: list):
 
 def permutations_mutable_all_in_revision2(arr: list):
     result = []
-    def helper(qwe: list, i: int):
-        if i == len(qwe):
-            result.append(qwe[:])
+    def helper(ip, i):
+        if i == len(ip):
+            result.append(ip[:])
             return
+
         else:
             hmap = {}
-            for pick in range(i, len(qwe)):
-                if qwe[pick] not in hmap:
-                    hmap[qwe[pick]] = 1
-                    qwe[pick], qwe[i] = qwe[i], qwe[pick]
-                    helper(qwe, i + 1)
-                    qwe[pick], qwe[i] = qwe[i], qwe[pick]
-    helper(qwe=arr, i=0)
+            for pick in range(i, len(ip)):
+                if ip[pick] not in hmap:
+                    hmap[ip[pick]] = 1
+                    ip[pick], ip[i] = ip[i], ip[pick]
+                    helper(ip, i+1)
+                    ip[pick], ip[i] = ip[i], ip[pick]
+
+
+
+    helper(arr, 0)
+    return result
+
+def get_distinct_subsets(s):
+    result = []
+    s_copy = sorted(s)
+    def helper(ip:list, i:int, slate: list):
+        result.append("".join(slate))
+
+        hmap = {}
+        for pick in range(i, len(ip)):
+            if ip[pick] not in hmap:
+                hmap[ip[pick]] = 1
+                slate.append(ip[pick])
+                helper(ip, pick+1, slate)
+                slate.pop()
+
+
+    helper(list(s_copy), 0, [])
     return result
 
 
 
-
-def permutations_mutable_non_distinct_numbers(arr: list):
-    """
-        the numbers can be picked from the list of remaining elements.
-        reduces the complexity to n!*n. this because for the remaining numbers,
-        a single unit of complexity is run
-    :param arr:
-    :return:
-    """
-    result = []
-    def helper(ip: list, i:int):
-        if i == len(ip):
-            result.append(ip[:])
-            return
-        for pick in range(i, len(ip)):
-            hmap = {}
-            if ip[pick] not in hmap:
-                hmap[ip[pick]] = 1
-                ip[pick], ip[i] = ip[i], ip[pick]
-                helper(ip, i + 1)
-                ip[pick], ip[i] = ip[i], ip[pick]
-
-    helper(arr, 0)
-    return  result
-
-
 if __name__ == '__main__':
-    print(permutations_immutable_revision([1,2,3]))
-    print(permutations_mutable([1, 2, 3]))
-    print(permutations_mutable_all_in_revision([1, 2, 3]))
-    print(permutations_mutable_all_in_revision2([1, 1, 3]))
+    # print(permutations_immutable_revision([1,2,3]))
+    # print(permutations_mutable([1, 2, 3]))
+    # print(permutations_mutable_all_in_revision2([1, 2, 3]))
+    # print(permutations_mutable_all_in_revision2([1, 1, 3]))
+    print(get_distinct_subsets("aab"))
+    print(get_distinct_subsets("dc"))
