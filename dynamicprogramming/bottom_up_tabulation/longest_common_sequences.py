@@ -60,6 +60,6 @@ def lcs_bottom_up_revision_2(str1, str2):
 
 if __name__ == '__main__':
     # print(lcs_bottom_up("hello", "ell"))
-    print(lcs_bottom_up_copy("hello", "h"))
-    print(lcs_bottom_up_revision_2("hello", "h"))
+    print(lcs_bottom_up_copy("leetcode", "cod"))
+    print(lcs_bottom_up_revision_2("beautybb", "b"))
 

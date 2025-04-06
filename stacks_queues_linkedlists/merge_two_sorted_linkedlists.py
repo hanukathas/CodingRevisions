@@ -55,11 +55,25 @@ def print_list(head: Node):
         head = head.next
     return '->'.join(result)
 
+def merge_lists(l1: Node, l2: Node):
+    dummy = Node(data=0)
+    cur = dummy
+    while l1 and l2:
+        if l1.data <= l2.data:
+            cur.next = l1
+            l1 = l1.next
+        else:
+            cur.next = l2
+            l2 = l2.next
+        cur = cur.next
+    if l1:
+        cur.next = l1
+    if l2:
+        cur.next = l2
+    return dummy.next
+
 if __name__ == '__main__':
     list1 = create_linked_list([1, 3, 5])
     list2 = create_linked_list([2, 4, 6])
-    merged = merge_two_sorted_linked_lists_revision(list1, list2)
+    merged = merge_lists(list1, list2)
     print(f"Merged list: {print_list(merged)}")
-
-
-
