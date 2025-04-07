@@ -23,4 +23,4 @@ def longest_substring_without_repeating(s: str):
 if __name__ == '__main__':
     print(longest_substring_without_repeating("abcabcbb"))
     print(longest_substring_without_repeating("bbbbb"))
-    print(longest_substring_without_repeating("pwwkew"))
+    print(longest_substring_without_repeating("bbbbb"))
