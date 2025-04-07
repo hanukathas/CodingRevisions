@@ -4,9 +4,10 @@ def house_robber(nums):
     dp[1] = max(nums[1], nums[0])
 
     for i in range(2, len(nums)):
-        dp[i] = max(dp[i-1], dp[i-2] + nums[i])
+        dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
 
     return dp[-1]
+
 
 def circular_house_robber(arr):
     print(arr[1:-1])
@@ -21,6 +22,7 @@ def circular_house_robber(arr):
 if __name__ == '__main__':
     # print(house_robber([2,10,12,1]))
     # print(house_robber([2, 10, 12, 1, 2]))
-    print(circular_house_robber([2, 10, 12, 1, 2]))
-
-
+    arr = [1, 2, 3, 1, 1]
+    print(circular_house_robber(arr))
+    print(arr[1:-1])
+    print(arr[:-2])
