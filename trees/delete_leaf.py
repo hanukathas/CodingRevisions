@@ -1,57 +1,50 @@
-from contextlib import nullcontext
-from wsgiref.validate import header_re
+"""
+Asymptotic complexity in terms of the number of nodes in the BST `n` and the size of the input list `m`:
+* Time: O(n * m).
+* Auxiliary space: O(n).
+* Total space: O(n + m).
+"""
 
-from trees.tree_node import TreeNode
+def delete_from_bst_helper(root, key):
+    if root is None:
+        return root
 
+    # Searching for a node with the given value.
+    if key < root.value:
+        root.left = delete_from_bst_helper(root.left, key)
+    elif key > root.value:
+        root.right = delete_from_bst_helper(root.right, key)
+    else:
+        # If the node to be deleted is a leaf node, then we will be replacing it with a NULL node.
+        if root.left is None and root.right is None:
+            del root
+            return None
 
-def delete_leaf(root: TreeNode, key: int):
-    if not root:
-        return None
-    prev = None
-    curr = root
+        # If the node to be deleted has only one child, then we will be replacing it with its non-NULL child.
+        if root.left is None:
+            temp = root.right
+            del root
+            return temp
+        if root.right is None:
+            temp = root.left
+            del root
+            return temp
 
-    while curr:
-        if curr.val == key:
-            break
-        if curr.val < key:
-            prev = curr
-            curr = curr.left
-        else:
-            prev = curr
-            curr = curr.right
+        # If the node to be deleted has two child nodes, then we will be replacing its value with that of its
+        # inorder successor and recursively delete the inorder successor.
+        temp = root.right
+        while temp.left is not None:
+            temp = temp.left
+        root.value = temp.value
+        root.right = delete_from_bst_helper(root.right, temp.value)
 
-    if curr is None:
-        return None
+    return root
 
-    if prev is None:
-        return None
+def delete_from_bst(root, values_to_be_deleted):
+    if root is None or len(values_to_be_deleted) == 0:
+        return root
 
-    # find if it's a leaf node:
-    if curr.left is None and curr.right is None:
-        if curr.val < prev.val:
-            prev.left = None
-            curr = None
-        else:
-            prev.right = None
-            curr = None
-    elif curr.left is None and curr.right is not None:
-        child = curr.right
-        if prev is None:
-            return child
-        if prev.val < curr.val:
-            prev.right = child
-        else:
-            prev.left = child
-    elif curr.left is not None and curr.right is None:
-        child = curr.left
-        if prev is None:
-            return child
-        if prev.val < curr.val:
-            prev.left = child
-        else:
-            prev.right = child
+    for value in values_to_be_deleted:
+        root = delete_from_bst_helper(root, value)
 
-
-
-
-
+    return root
