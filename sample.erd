@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dineug/erd-editor/main/json-schema/schema.json",
+  "version": "3.0.0",
+  "settings": {
+    "width": 2000,
+    "height": 2000,
+    "scrollTop": -158,
+    "scrollLeft": 0,
+    "zoomLevel": 1,
+    "show": 431,
+    "database": 4,
+    "databaseName": "golden gate bridge",
+    "canvasType": "ERD",
+    "language": 1,
+    "tableNameCase": 4,
+    "columnNameCase": 2,
+    "bracketType": 1,
+    "relationshipDataTypeSync": true,
+    "relationshipOptimization": false,
+    "columnOrder": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "maxWidthComment": -1,
+    "ignoreSaveSettings": 0
+  },
+  "doc": {
+    "tableIds": [
+      "MqP0-R1yh3HLZvzVhfJd2"
+    ],
+    "relationshipIds": [],
+    "indexIds": [],
+    "memoIds": []
+  },
+  "collections": {
+    "tableEntities": {
+      "MqP0-R1yh3HLZvzVhfJd2": {
+        "id": "MqP0-R1yh3HLZvzVhfJd2",
+        "name": "",
+        "comment": "",
+        "columnIds": [],
+        "seqColumnIds": [],
+        "ui": {
+          "x": 200,
+          "y": 445,
+          "zIndex": 2,
+          "widthName": 60,
+          "widthComment": 60,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1744126366653,
+          "createAt": 1744126366653
+        }
+      }
+    },
+    "tableColumnEntities": {},
+    "relationshipEntities": {},
+    "indexEntities": {},
+    "indexColumnEntities": {},
+    "memoEntities": {}
+  },
+  "lww": {
+    "settings.databaseName": [
+      "settings",
+      -1,
+      -1,
+      {
+        "databaseName": 1744125874876
+      }
+    ],
+    "MqP0-R1yh3HLZvzVhfJd2": [
+      "tableEntities",
+      1744126366652,
+      -1,
+      {}
+    ]
+  }
+}
