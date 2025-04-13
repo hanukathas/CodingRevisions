@@ -2,7 +2,7 @@ from typing import AnyStr
 
 
 class TreeNode:
-    def __init__(self, val: object):
+    def __init__(self, val: int):
         self.val = val
         self.left = None
         self.right = None
