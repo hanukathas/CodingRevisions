@@ -8,7 +8,7 @@ compilation and collection of Colin Matte kathas that the world can use
 * 🌍 I'm actually from California
 
 * ✉️ You can contact me at [hanukathas@gmail.com](mailto:hanukathas@gmail.com)
-* 🚀 I'm currently working on [Karthik Rajagopalan](github.com/hanukathas)
+* 🚀 I'm currently working on my passion project. Currently the project is in a stealth mode.
 
 * 🤝 I'm open to collaborating Data and ML Engineering
 
