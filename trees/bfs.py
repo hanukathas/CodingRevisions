@@ -11,6 +11,7 @@ def bfs(root: TreeNode):
     curr = root
 
     queue.append(curr)
+
     while len(queue) > 0:
         element = queue.popleft()
         elements.append(element.val)
