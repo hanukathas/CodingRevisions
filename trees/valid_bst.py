@@ -1,7 +1,42 @@
 from trees.tree_node import TreeNode
 
+def valid_bst_recursive(root: TreeNode):
+    if root is None:
+        return True
 
-def valid_bst(root: TreeNode):
+    min_val = float('-inf')
+    max_val = float('inf')
+
+    def valid_bst_recursive_helper(leaf: TreeNode, min_val: float, max_val:float):
+        if leaf is None:
+            return True
+        if leaf.val < min_val or leaf.val > max_val:
+            return False
+        return valid_bst_recursive_helper(leaf.left, min_val, leaf.val) and valid_bst_recursive_helper(leaf.right, leaf.val, max_val)
+    return valid_bst_recursive_helper(root, min_val, max_val)
+
+def valid_bst_bit_wise(root: TreeNode):
+    if root is None:
+        return True
+    prev = [float('-inf')]
+
+    def helper(leaf: TreeNode, prev_node_val):
+        if leaf is None:
+            return True
+
+        is_left_bst_tree = helper(leaf.left, prev_node_val)
+
+        if leaf.val < prev_node_val:
+            return False
+        prev_node_val = leaf.val
+
+        is_right_bst_tree = helper(leaf.right, prev_node_val)
+
+        return is_left_bst_tree and is_right_bst_tree
+
+
+
+def valid_bst_dont_use(root: TreeNode):
     if not root:
         return  True
     valid_bst_result = list()
