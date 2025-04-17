@@ -21,14 +21,14 @@ def largest_rectangle_historgram(histogram: list):
     # step 2: find the right span, smaller than the right ith element
     right_span = [0] * n
     histogram_stack_right = []
-    for i in range(n):
+    for i in range(n-1, -1, -1):
         while histogram_stack_right and histogram_stack_right[-1][0] >= histogram[i]:
             histogram_stack_right.pop()
         if histogram_stack_right:
-            right_span[i] = histogram_stack_left[-1][1] - i   # distance from current pointer to position where the value is lesser
+            right_span[i] = histogram_stack_right[-1][1] - i   # distance from current pointer to position where the value is lesser
         else:
             right_span[i] = n - i
-        histogram_stack_left.append((histogram[i], i))
+        histogram_stack_right.append((histogram[i], i))
     largest_rectangle = 0
     for i in range(n):
         area = histogram[i] * (left_span[i] + right_span[i] - 1)
@@ -36,7 +36,7 @@ def largest_rectangle_historgram(histogram: list):
     return largest_rectangle
 
 if __name__ == '__main__':
-    print(largest_rectangle_historgram([4,4]))
+    print(largest_rectangle_historgram([2,1,5,6,2,3]))
 
 
 
