@@ -15,3 +15,8 @@ def r_valid_pick_options(n: int):
 
 if __name__ == '__main__':
     print(r_valid_pick_options(3))
+
+
+
+
+
