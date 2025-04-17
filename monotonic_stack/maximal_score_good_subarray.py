@@ -33,7 +33,7 @@ def maximal_score_good_subarray(nums: list, k: int):
     max_score_good = 0
     for i in range(len(nums)):
         area = nums[i] * (left_span[i] + right_span[i] - 1)
-        if i - left_span + 1 < k < i + right_span + 1:
+        if i - left_span + 1 < k < i + right_span - 1:
             max_score_good = max(max_score_good, area)
     return max_score_good
 

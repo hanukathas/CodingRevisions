@@ -1,4 +1,4 @@
-def sum_subarray_min(arr: list):
+def r_sum_subarray_min(arr: list):
     total_sum = 0
     dp = [0] * len(arr)
     subarray_min_stack = []
@@ -20,6 +20,6 @@ def sum_subarray_min(arr: list):
     return total_sum
 
 if __name__ == '__main__':
-    print(sum_subarray_min([3,1,2,4]))
-    print(sum_subarray_min([11,81,94,43,3]))
+    print(r_sum_subarray_min([3,1,2,4]))
+    print(r_sum_subarray_min([11,81,94,43,3]))
 
