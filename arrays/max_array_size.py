@@ -5,7 +5,7 @@ def max_array_size(nums: list, k: int) -> int:
     for i in range(len(nums)):
         prefix_sum += nums[i]
         if prefix_sum - k in hmap:
-            global_max = max(global_max, i+1 - hmap[prefix_sum - k])
+            global_max = max(global_max, i+1 - hmap[prefix_sum - k]) # add one to increment count by 1
 
         # learning: to get the position of the prefix-sum
         if prefix_sum not in hmap:

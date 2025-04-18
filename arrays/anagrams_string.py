@@ -69,5 +69,5 @@ def find_anagrams_pos(s1:str, s2:str) -> list:
 
 if __name__ == '__main__':
     # print(anagrams_string("el", "hellelo"))
-    # print(anagrams_string("ll", "hellelo"))
+    print(anagrams_string("ll", "hellelo"))
     print(find_anagrams_pos("ll", "hellelo"))
