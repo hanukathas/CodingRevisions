@@ -3,7 +3,7 @@ from trees.tree_node import TreeNode
 
 def check_if_symmetric(root: TreeNode):
     def is_mirror(root_1: TreeNode, root_2: TreeNode):
-        if root_1 is None and root_1 is None:
+        if root_1 is None and root_2 is None:
             return True
         if root_1 is None or root_2 is None:
             return False

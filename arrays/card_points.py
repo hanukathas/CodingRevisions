@@ -13,7 +13,7 @@ def card_points_revision(arr, k):
     cur_sum = sum(arr[:k])
     max_sum = cur_sum
     for i in range(k):
-        print(arr[i])
+        # print(arr[i])
         cur_sum = cur_sum + arr[i] - arr[n - k + 1]
         max_sum = max(max_sum, cur_sum)
     return max_sum

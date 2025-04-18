@@ -1,12 +1,11 @@
 def max_erasure_val(nums: list) -> int:
     running_sum = 0
     max_sum = 0
-    left = 0
     seen = set()
     for i in range(len(nums)):
         while nums[i] in seen:
             seen.remove(nums[i])
-            left += 1
+
             running_sum -= nums[i]
         seen.add(nums[i])
         running_sum += nums[i]
