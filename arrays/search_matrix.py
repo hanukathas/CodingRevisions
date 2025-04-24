@@ -27,4 +27,5 @@ def search_matrix_revision(arr: list, target: int):
 
 if __name__ == '__main__':
     print(search_matrix([[1,4,10], [2,5,12],[3,6,14]], 50))
+    print(search_matrix([[1, 4, 10], [2, 5, 12], [3, 6, 14]], 5))
 

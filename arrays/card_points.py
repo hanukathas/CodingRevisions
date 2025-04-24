@@ -21,5 +21,5 @@ def card_points_revision(arr, k):
 
 
 if __name__ == '__main__':
-    # print(card_points([1,2,3,4,5,6,1], 3))
-    print(card_points_revision([1, 2, 3, 4, 5, 6, 1], 3))
+    print(card_points([1,2,3,4,5,6,1], 3))
+    # print(card_points_revision([1, 2, 3, 4, 5, 6, 1], 3))
