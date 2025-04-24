@@ -14,9 +14,10 @@ def anagrams_string(str1, str2):
         else:
             hmap_str2[str2[i]] = 1
     k = len(str1)
-
+    count = 0
     if hmap_str2 == hmap_str1:
         locations.append(0)
+        count += 1
 
     for i in range(k, len(str2)):
         if str2[i - k] in hmap_str2:
@@ -31,7 +32,8 @@ def anagrams_string(str1, str2):
         # print(hmap_str1, hmap_str2)
         if hmap_str2 == hmap_str1:
             locations.append(i-k)
-    return locations
+            count += 1
+    return locations, count
 
 def find_anagrams_pos(s1:str, s2:str) -> list:
     output = []
@@ -70,4 +72,4 @@ def find_anagrams_pos(s1:str, s2:str) -> list:
 if __name__ == '__main__':
     # print(anagrams_string("el", "hellelo"))
     print(anagrams_string("ll", "hellelo"))
-    print(find_anagrams_pos("ll", "hellelo"))
+    # print(find_anagrams_pos("ll", "hellelo"))

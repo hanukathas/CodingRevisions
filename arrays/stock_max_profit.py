@@ -21,7 +21,19 @@ def stock_max_profit_revision(arr: list):
             continue
     return max_profit
 
+def max_stock_profit(arr: list):
+    max_profit = 0
+    least_stock_price_index = 0
+
+    for i in range(1, len(arr)):
+        if arr[i] > arr[least_stock_price_index]:
+            max_profit = max(max_profit, arr[i] - arr[least_stock_price_index])
+        else:
+            least_stock_price_index = i
+    return max_profit
+
 
 if __name__ == '__main__':
     print(stock_max_profit([7,6,4,3,1]))
     print(stock_max_profit_revision([7,1,5,3,6,4]))
+    print(max_stock_profit([7, 1, 5, 3, 6, 4]))
