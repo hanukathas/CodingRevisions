@@ -16,6 +16,7 @@ def sum_subarray_min(arr: list):
 
         subarray_min_stack.append((arr[i], i))
         total_sum += dp[i]
+        print(total_sum)
 
     return total_sum
 
