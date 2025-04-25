@@ -1,4 +1,7 @@
 from collections import deque
+from inspect import stack
+from itertools import count
+
 
 def ocean_view(arr: list):
     max_height = arr[-1]
@@ -26,5 +29,5 @@ def ocean_view_ms(heights: list):
     return result
 
 if __name__ == '__main__':
-    # print(ocean_view([10,9,1,3]))
-    print(ocean_view_ms([10, 9, 1, 3]))
+    print(ocean_view([10,9,1,3]))
+    
