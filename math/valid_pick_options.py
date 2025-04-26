@@ -13,5 +13,14 @@ def r_valid_pick_options(n: int):
 
     return dp[n]
 
+def r_valid_pick_options_r(n: int):
+    dp = [0] * (n + 1)
+    dp[1] = 1
+
+    for i in range(2, n+1):
+        dp[i] = dp[i-1] * i * (2 * i - 1)
+    return dp[n]
+
 if __name__ == '__main__':
     print(r_valid_pick_options(3))
+    print(r_valid_pick_options_r(3))
