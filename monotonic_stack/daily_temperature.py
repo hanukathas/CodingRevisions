@@ -14,6 +14,11 @@ def daily_temperature(temperatures: list):
     return answers
 
 def daily_temperature_r(temperatures: list):
+    """
+    https://leetcode.com/problems/daily-temperatures/description/
+    :param temperatures:
+    :return:
+    """
     daily_temperature_r_stack = []
     answers = []
     for i in range(len(temperatures)-1, -1, -1):
