@@ -39,3 +39,5 @@ def maximal_score_good_subarray(nums: list, k: int):
 
 
 
+
+

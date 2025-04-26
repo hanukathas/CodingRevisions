@@ -28,6 +28,19 @@ def ocean_view_ms(heights: list):
 
     return result
 
+def ocean_view_ms_r(heights: []):
+    ov_stack = []
+    ans = []
+    for i in range(len(heights)):
+        while ov_stack and ov_stack[-1][0] < heights[i]:
+            ov_stack.pop()
+
+        ov_stack.append([heights[i], i])
+    for i in range(len(ov_stack)):
+        ans.append(ov_stack[i][1])
+    return ans
+
 if __name__ == '__main__':
     print(ocean_view([10,9,1,3]))
+    print(ocean_view_ms_r([10, 9, 1, 3]))
     
