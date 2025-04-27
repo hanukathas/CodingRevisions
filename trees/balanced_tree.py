@@ -5,6 +5,8 @@ def balanced_tree(root: TreeNode):
     """
         if the height between root and its children is 1. Means, every level,
         there is a left and right child
+
+        leetcode: https://leetcode.com/problems/balanced-binary-tree/description/
     :param root:
     :return:
     """
@@ -29,6 +31,22 @@ def balanced_tree(root: TreeNode):
 
         balanced_tree_result[0] = is_balanced
         return max(left_height, right_height)
+
     balanced_tree_helper(root)
 
     return balanced_tree_result[0]
+
+
+def is_balanced_tree(leaf: TreeNode, result: bool):
+    left_height = 0
+    right_height = 0
+    if leaf.left is not None:
+        left_height = 1 + is_balanced_tree(leaf.left, result)
+    if leaf.right is not None:
+        right_height = 1 + is_balanced_tree(leaf.right, result)
+    if abs(right_height - left_height) > 1:
+        result = False
+    return abs(right_height - left_height)
+
+
+

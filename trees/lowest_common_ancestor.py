@@ -4,7 +4,8 @@ from leetcode.blackline.level_order_traversal import TreeNode
 def lowest_common_ancestor(root: TreeNode, p: TreeNode, q: TreeNode):
     found = [None]
     def helper(leaf: TreeNode):
-        pfound = qfound = False
+        pfound = False
+        qfound = False
         if leaf == p:
             pfound = True
         if leaf == q:

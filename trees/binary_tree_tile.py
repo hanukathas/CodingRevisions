@@ -3,6 +3,7 @@ from trees.tree_node import TreeNode
 
 def binary_tree_tile(root: TreeNode):
     """
+    leet code: https://leetcode.com/problems/binary-tree-tilt/
     tilt of a tree is the absolute difference of left and right subtrees
     for a given subtree with a single left and right subtree, the tilt is the difference
     this is a bottom up solution
@@ -28,5 +29,19 @@ def binary_tree_tile(root: TreeNode):
 
     binary_tree_tile_helper(root)
     return binary_tree_tile_result
+
+def binary_tree_tile_r(leaf: TreeNode, tile: list):
+    left_sum = 0
+    right_sum = 0
+    if leaf.left is not None:
+        left_sum = binary_tree_tile_r(leaf.left, tile)
+    if leaf.right is not None:
+        right_sum = binary_tree_tile_r(leaf.right, tile)
+    tile += abs(left_sum - right_sum)
+
+    return left_sum + right_sum + leaf.val
+
+
+
 
 

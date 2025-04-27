@@ -4,6 +4,12 @@ from leetcode.blackline.level_order_traversal import TreeNode
 
 
 def find_successor(node: TreeNode, root: TreeNode):
+    """
+    https://leetcode.com/problems/inorder-successor-in-bst/description/
+    :param node:
+    :param root:
+    :return:
+    """
     if not root:
         return None
     if node.right:
@@ -35,7 +41,7 @@ def find_successor_revision(node: TreeNode, root: TreeNode):
         while curr:
             if curr.val < node.val:
                 ancestor = curr
-                curr = curr.next
+                curr = curr.left
             else:
                 curr = curr.right
         return ancestor
