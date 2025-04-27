@@ -24,3 +24,7 @@ def two_city_scheduling(costs: list):
 
 if __name__ == '__main__':
     print(two_city_scheduling([[10, 20], [30, 200], [400, 50], [30, 20]]))
+
+    """
+    case when then else end 
+    """

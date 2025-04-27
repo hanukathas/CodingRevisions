@@ -14,6 +14,11 @@ def r_valid_pick_options(n: int):
     return dp[n]
 
 def r_valid_pick_options_r(n: int):
+    """
+    https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/description/
+    :param n:
+    :return:
+    """
     dp = [0] * (n + 1)
     dp[1] = 1
 
