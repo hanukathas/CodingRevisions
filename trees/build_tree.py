@@ -1,3 +1,4 @@
+from trees.binary_tree_tile import binary_tree_tile_r
 from trees.tree_node import TreeNode
 
 
@@ -16,7 +17,18 @@ def build_tree(arr:list):
         root.right = helper(A, mid+1, end)
 
         return root
-
-
-
     return helper(arr, 0, len(arr) - 1)
+
+def build_tree_r(arr:list):
+    start = 0
+    end = len(arr) - 1
+    mid = start + (end - start) // 2
+
+    root = TreeNode(val=arr[mid])
+    root.left = build_tree_r(arr[start:mid])
+    root.right = build_tree_r(arr[mid+1:])
+
+    return  root
+
+
+
