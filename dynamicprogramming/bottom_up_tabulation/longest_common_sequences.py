@@ -57,9 +57,23 @@ def lcs_bottom_up_revision_2(str1, str2):
                 dp[i][j] = max(dp[i-1][j], dp[i][j-1]) #which ever has a higher match coefficient
     return dp[m][n]
 
+def lcs_bottom_up_r(str1, str2):
+    m = len(str1)
+    n = len(str2)
+
+    dp = [[0] * n for _ in range(m)]
+
+    for i in range(m):
+        for j in range(n):
+            if str1[i] == str2[j]:
+                dp[i][j] = dp[i-1][j-1] + 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    return dp[m][n]
 
 if __name__ == '__main__':
     # print(lcs_bottom_up("hello", "ell"))
-    print(lcs_bottom_up_copy("leetcode", "cod"))
-    print(lcs_bottom_up_revision_2("beautybb", "b"))
+    # https: // leetcode.com / problems / longest - common - subsequence / description /
+    print(lcs_bottom_up("leetcode", "cod"))
+    print(lcs_bottom_up("beautybb", "b"))
 

@@ -23,8 +23,8 @@ def count_phone_numbers_of_given_length(start_digit, phone_number_length):
             for prev_digit in range(10):
                 if d in moves[prev_digit]:
                     dp[l][d] += dp[l - 1][prev_digit]
-                print(f"prev_digit:{prev_digit}")
-            print(l, d, dp)
+
+        print(dp)
 
         # Return total count for required length
     return sum(dp[phone_number_length])

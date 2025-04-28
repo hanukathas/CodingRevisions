@@ -15,6 +15,17 @@ def coin_change_count_revision(coins, amount):
             dp[i] = dp[i] + dp[i - coin]
     return dp[amount]
 
+def coin_change_count_r(coins, amount):
+    dp = [0] * (amount + 1)
+    dp[0] = 1
+    for coin in coins:
+        for i in range(amount + 1):
+            dp[i] = dp[i] + dp[i - coin]
+    return dp[amount]
+
+
+
+
 if __name__ == '__main__':
     print(coin_change_count_revision([1, 2, 5], 6))
 
