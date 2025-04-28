@@ -1,4 +1,9 @@
 def max_path_sum(grid: list):
+    """
+    https://leetcode.com/problems/minimum-path-sum/description/
+    :param grid:
+    :return:
+    """
     n = len(grid)
     m = len(grid[0])
 
@@ -9,7 +14,7 @@ def max_path_sum(grid: list):
         dp[i][0] = dp[i-1][0] + grid[i][0]
     for i in range(1,m):
         dp[0][i] = dp[0][i-1] + grid[0][i]
-
+    print(dp)
     for i in range(1,n):
         for j in range(1,m):
             dp[i][j] = max(dp[i-1][j]+grid[i][j], dp[i][j-1]+grid[i][j] )
@@ -17,4 +22,4 @@ def max_path_sum(grid: list):
     return dp[n - 1][m - 1]
 if __name__ == '__main__':
     grid = [[1, -4, 3], [4, -2, 2]]
-    max_path_sum(grid)
+    print(max_path_sum(grid))

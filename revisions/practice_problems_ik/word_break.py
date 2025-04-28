@@ -11,6 +11,20 @@ def word_break(words: list, word: str):
     print(dp)
     return dp[0]
 
+def word_break_r(words: list, word: str):
+    n = len(word)
+    dp = [False] * (n + 1)
+    dp[n] = True
+
+    for i in range(n-1, -1, -1):
+        for j in range(i, n-1):
+            if word[i:j] in words and dp[j]:
+                dp[i] = True
+    return dp[0]
+
+
+
+
 def word_break_revision(words: list, word: str):
     """
         if the word is empty then return 0

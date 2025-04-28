@@ -1,5 +1,11 @@
 def levenshtein_distance2(word1, word2):
     # instantiate a space to an array whose size matches the cartesian product of the length of the two words
+    """
+    https://leetcode.com/problems/edit-distance/description/
+    :param word1:
+    :param word2:
+    :return:
+    """
     dp = [[0] * (len(word2) + 1) for _ in range(len(word1)+1)]
     m = len(word1)
     n = len(word2)

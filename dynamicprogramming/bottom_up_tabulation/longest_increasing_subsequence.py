@@ -1,6 +1,11 @@
 test1 = [10, 9, 2, 5, 3, 7, 101, 18, 195, 6, 1]
 
 def longest_increasing_subsequence(arr):
+    """
+    https://leetcode.com/problems/longest-increasing-subsequence/description/
+    :param arr:
+    :return:
+    """
     dp = [1] * len(arr)
 
     for i in range(len(arr)):
@@ -33,7 +38,17 @@ def longest_increasing_subsequence_revision_2(arr):
                 dp[i] = max(dp[i], dp[j] + 1)
     return max(dp)
 
+def longest_increasing_subsequence_r(arr):
+    dp = [1] * (len(arr) + 1)
+    dp[0] = 1
+    for i in range(1, len(arr)):
+        for j in range(i):
+            if arr[j] < arr[i]:
+                dp[i] = max(dp[i], dp[j] + 1)
+    return max(dp)
+
+
 
 if __name__ == '__main__':
     print(longest_increasing_subsequence(test1))
-    print(longest_increasing_subsequence_revision_2(test1))
+    print(longest_increasing_subsequence_r(test1))

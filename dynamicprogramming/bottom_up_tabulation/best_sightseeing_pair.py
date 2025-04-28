@@ -1,3 +1,6 @@
+from trees.path_sum import result
+
+
 def best_sightseeing_pair(values: list):
     max_so_far = values[0] + 0
     result = float('-inf')
@@ -7,6 +10,16 @@ def best_sightseeing_pair(values: list):
         max_so_far = max(max_so_far, values[j] + j)
 
     return result
+
+def best_sightseeing_pair_r(values: list):
+    sum_i = values[0] + 0
+    result = float('-inf')
+
+    for j in range(1, len(values)):
+        result = max(result, sum_i + values[j] - j)
+        sum_i = max(sum_i, values[j] + j)
+    return result
+
 
 def best_sightseeing_pair_revision(values: list):
     max_so_far = values[0] + 0
