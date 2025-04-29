@@ -51,6 +51,22 @@ def letter_case_permutation_efficient_revision2(s: str):
     helper(list(s), 0)
     return result
 
+def letter_case_permutation_efficient_r(s: str):
+    result = []
+    def helper(slist, i):
+        if len(slist) == i:
+            result.append(slist[:])
+            return
+        if str(slist[i]).isdigit():
+            helper(slist, i+1)
+        else:
+            slist[i] = str(slist[i]).lower()
+            helper(slist, i + 1)
+            slist[i] = str(slist[i]).upper()
+            helper(slist, i + 1)
+
+    helper(list(s), 0)
+    return result
 
 def letter_case_permutation_efficient_revision3(s: str):
     result = []
