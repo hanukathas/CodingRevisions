@@ -1,3 +1,5 @@
+from xml.etree.ElementInclude import include
+
 test1 = [5, 2]
 
 
@@ -61,7 +63,16 @@ def generate_combinations_revision(arr, k):
 
     return include_first + exclude_first
 
+def generate_combinations_r(arr, k):
+    if k == 0:
+        return [[]]
+    if len(arr) < k:
+        return []
+    first = arr[0]
+    exclude_r = generate_combinations(arr[1:], k)
+    include_r = [[first] + comb for comb in generate_combinations(arr[1:], k-1)]
 
+    return exclude_r + include_r
 
 
 if __name__ == '__main__':
@@ -70,3 +81,4 @@ if __name__ == '__main__':
     arr = [i + 1 for i in range(test1[0])]
 
     print(generate_combinations_revision(arr, test1[1]))
+    print(generate_combinations_r(arr, test1[1]))

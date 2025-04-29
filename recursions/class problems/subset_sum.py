@@ -51,7 +51,26 @@ def subset_sum_equals_k_revision2(arr, k):
     helper(0, [], 0)
     return list(result)
 
+def subset_sum_equals_k_r(arr, k):
+    result = []
+    def helper(i, slate, slatesum):
+        if slatesum == k:
+            if slate[:] not in result:
+                result.append(sorted(slate[:]))
+            return 1
+        if slatesum > k:
+            return 0
+        if i == len(arr):
+            return 0
+        if len(arr) == len(slate):
+            return 0
+        return helper(i + 1, slate, slatesum) + helper(i + 1, slate + [arr[i]], slatesum + arr[i])
+    helper(0, [], 0)
+    return result
+
 
 if __name__ == '__main__':
     print(subset_sum_equals_k([10,1,2,7,6,1,5], 8))
-    print(subset_sum_equals_k_revision2([94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94], 2256))
+    print(subset_sum_equals_k_revision2([10,1,2,7,6,1,5], 8))
+
+    print(subset_sum_equals_k_r([10, 1, 2, 7, 6, 1, 5], 8))

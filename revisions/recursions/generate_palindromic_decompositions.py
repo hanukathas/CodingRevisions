@@ -25,10 +25,21 @@ def generate_palindromic_decompositions(s):
                 slate.append(s[start:end+1])
                 helper(end+1, slate)
                 slate.pop()
-    helper(0, [])
+    # helper(0, [])
+
+    def helper_2(start, slate):
+        if start == len(s):
+            result.append(slate[:])
+            return
+        for end in (start, len(s)):
+            if is_palindrome(start, end):
+                slate.append(s[start:end + 1])
+                helper_2(end + 1, slate)
+                slate.pop()
+    helper_2(0, [])
     return result
 
 if __name__ == '__main__':
-    s = "abracadabra"
+    s = "babad"
     result = generate_palindromic_decompositions(s)
     print("All palindromic decompositions:", result)
