@@ -18,7 +18,7 @@ def subarray_divisible_k(arr, k):
             hmap[rem] = 1
         else:
             hmap[rem] += 1
-
+        print(hmap)
     return  total
 
 def subarray_divisible_k_revision(arr, k):
@@ -51,14 +51,16 @@ def subarray_divisible_k_revision_k(arr, k):
             hmap[reminder] += 1
         else:
             hmap[reminder] = 1
+        print(hmap)
     return total
 
 
 
 if __name__ == '__main__':
-    print(subarray_divisible_k([4,5,0,-2,-3,1], 5))
-    print(subarray_divisible_k_revision_k([5, 4, 1], 5))
-    print(subarray_divisible_k_revision([4, 5, 0, -2, -3, 1], 5))
+    # print(subarray_divisible_k([4,5,0,-2,-3,1], 5))
+    print(subarray_divisible_k([23,2,4,6,7], 6))
+    # print(subarray_divisible_k_revision_k([5, 4, 1], 5))
+    # print(subarray_divisible_k_revision([4, 5, 0, -2, -3, 1], 5))
 
 
 
