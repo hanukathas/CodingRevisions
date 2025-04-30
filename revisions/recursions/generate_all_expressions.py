@@ -28,7 +28,38 @@ def generate_expressions(s, target):
     return result
 
 
+def generate_expressions_r(num: [], target: int):
+    if len(num) == 1 and num[0] == target:
+        return str(num[0])
+    result = []
+    def helper(index, sum, expression):
+
+        if index == len(num):
+
+            if sum == target:
+                result.append(expression)
+            sum = 0
+            expression = ""
+            return
+
+        for i in range(index, len(num)):
+            cur_num = num[index:i + 1]
+            cur_val = int(cur_num)
+
+            if index == 0:
+                helper(i + 1, cur_val, cur_num)
+            else:
+                helper(i + 1, sum + cur_val, expression + "+" + cur_num)
+                if expression[-1] != 0:
+                    helper(i + 1, sum * cur_val, expression + "*" + cur_num)
+
+    helper(0, 0, "")
+
+    return result
+
+
 if __name__ == '__main__':
-    s = "1234"
-    target = 11
+    s = "232"
+    target = 8
     print(generate_expressions(s, target))  # ['1*2*3', '1+2+3']
+    print(generate_expressions_r(s, target))  # ['1*2*3', '1+2+3']

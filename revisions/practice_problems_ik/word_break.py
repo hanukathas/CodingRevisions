@@ -13,14 +13,16 @@ def word_break(words: list, word: str):
 
 def word_break_r(words: list, word: str):
     n = len(word)
-    dp = [False] * (n + 1)
+    dp = [0] * (n + 1)
     dp[n] = True
 
-    for i in range(n-1, -1, -1):
-        for j in range(i, n-1):
+    for i in range(n+1, -1, -1):
+        for j in range(i, n + 1):
             if word[i:j] in words and dp[j]:
                 dp[i] = True
+
     return dp[0]
+
 
 
 
@@ -49,4 +51,5 @@ def word_break_revision(words: list, word: str):
 
 if __name__ == '__main__':
     print(word_break(['sugar','dad', 'dy'], 'sugardaddy'))
+    print(word_break(["leet","code"], 'leetcode'))
     print(word_break_revision(['sugar', 'dad', 'dy'], 'sugardaddy'))

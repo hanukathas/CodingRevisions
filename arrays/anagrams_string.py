@@ -49,11 +49,11 @@ def find_anagrams_pos(s1:str, s2:str) -> list:
             hmap_s2[s2[i]] += 1
         else:
             hmap_s2[s2[i]] = 1
-    print(hmap_s2, hmap_s1)
+    # print(hmap_s2, hmap_s1)
     if hmap_s1 == hmap_s2:
         output.append(0)
 
-    print(output)
+    # print(output)
     k = len(s1)
     for i in range(k, len(s2)):
         if s2[i-k] in hmap_s2:
@@ -72,4 +72,4 @@ def find_anagrams_pos(s1:str, s2:str) -> list:
 if __name__ == '__main__':
     # print(anagrams_string("el", "hellelo"))
     print(anagrams_string("ll", "hellelo"))
-    # print(find_anagrams_pos("ll", "hellelo"))
+    print(find_anagrams_pos("ll", "hellelo"))
