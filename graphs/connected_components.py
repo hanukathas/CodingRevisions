@@ -1,4 +1,4 @@
-from collections import deque
+from collections import deque, defaultdict
 
 
 def connected_components(n: int, edges: list):
@@ -46,3 +46,44 @@ def connected_components(n: int, edges: list):
                         nodes.append(connected_node)
 
     return number_of_components
+
+def set_adjacency(matrix):
+    adjacency_list = defaultdict(list)
+    for edge in matrix:
+        adjacency_list[edge[0]].append(edge[1])
+        adjacency_list[edge[1]].append(edge[0])
+
+    return adjacency_list
+
+def bfs_traversal(adjacency: {}, traversed: set, root: int):
+    vertexes = deque()
+    vertexes.append(root)
+
+    while vertexes:
+        edge_vertex = vertexes.popleft()
+        traversed.add(edge_vertex)
+        for vertex in adjacency[edge_vertex]:
+            if not vertex in traversed:
+                vertexes.append(vertex)
+    return traversed
+
+def cc(n:int, matrix: list):
+    adjacency = set_adjacency(matrix=matrix)
+    traversed = set()
+    unconnected_components = 0
+    for i in range(n):
+        if i not in traversed:
+            print(i)
+            unconnected_components += 1
+            traversed = bfs_traversal(adjacency=adjacency, traversed=traversed, root=i)
+
+    return unconnected_components
+
+if __name__ == '__main__':
+    matrix = [
+[0, 1],
+[0, 2],
+[0, 4],
+[2, 3]
+]
+    print(cc(6, matrix))
