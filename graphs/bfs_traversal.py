@@ -1,6 +1,4 @@
 from collections import deque, defaultdict
-
-
 def bfs_traversal(n, edges):
     def bfs_adjacency_list():
         d = defaultdict(list)
@@ -28,13 +26,42 @@ def bfs_traversal(n, edges):
 
     return list(captured)
 
+def set_adjacency():
+    adjacency_list = defaultdict(list)
+    for edge in matrix:
+        adjacency_list[edge[0]].append(edge[1])
+        adjacency_list[edge[1]].append(edge[0])
+
+    return adjacency_list
+
+def graph_bfs(n: int, matrix: list):
+
+    adjacency = set_adjacency()
+    traversed = set()
+
+    root = list(adjacency.keys())[0]
+
+    vertexes = deque()
+    vertexes.append(root)
+
+    while vertexes:
+        edge_vertex = vertexes.popleft()
+        traversed.add(edge_vertex)
+        for vertex in adjacency[edge_vertex]:
+            if not vertex in traversed:
+                vertexes.append(vertex)
+    return traversed
+
+
 if __name__ == '__main__':
-    print(bfs_traversal(6, [
+    matrix = [
 [0, 1],
 [0, 2],
 [0, 4],
 [2, 3]
-]))
+]
+    print(bfs_traversal(6, matrix))
+    print(graph_bfs(6, matrix))
 
 
 
