@@ -44,15 +44,15 @@ def is_valid_graph(n: int, edges: list):
     return set(i for i in range(n)) == traversed
 
 if __name__ == '__main__':
-#     print(is_valid_graph(5, [
-# [0, 1],
-# [0, 2],
-# [1, 3],
-# [3, 0],
-# [3, 2],
-# [4, 3],
-# [4, 0]
-# ]))
+    print(is_valid_graph(5, [
+[0, 1],
+[0, 2],
+[1, 3],
+[3, 0],
+[3, 2],
+[4, 3],
+[4, 0]
+]))
 
     print(is_valid_graph(3, [
         [0,1], [1,2]
