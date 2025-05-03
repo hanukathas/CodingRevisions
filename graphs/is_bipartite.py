@@ -4,6 +4,9 @@ from collections import deque
 def is_component_bipartite(matrix: list):
     """
     https://leetcode.com/problems/is-graph-bipartite/
+    if we have two disjoint set of vertices and edges flow between them
+    we know they are bipartite if the level of the neighbor and the vertex are not the same
+    this is because they have the same parent, and they form a cycle.
     :return:
     """
     n = len(matrix)
