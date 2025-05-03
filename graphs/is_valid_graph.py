@@ -3,9 +3,12 @@ from collections import defaultdict, deque
 
 def is_valid_graph(n: int, edges: list):
     """
+    def # of components is 1 and there are no cycles, basically we need a tree
     1. component count = 1. A single queue loop visits all vertexes
-    2. at least one vertex has odd edges
-    
+    2. at least one vertex has odd edges because they have a cross edge
+    3. how to find if they have a cross edge: if there is a vertex whose parent is not the parent vertex then we find a
+    cross edge, which signals a cycle
+    4. youtube: https://www.youtube.com/watch?v=bXsUuownnoQ
     :param n:
     :param edges:
     :return:
@@ -38,6 +41,7 @@ def is_valid_graph(n: int, edges: list):
                 parent[vertex_end] = vertex
                 queue.append(vertex_end)
             else:
+
                 if parent[vertex] != vertex_end:
                     return False
 
