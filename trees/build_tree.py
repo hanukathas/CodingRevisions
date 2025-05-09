@@ -30,5 +30,14 @@ def build_tree_r(arr:list):
 
     return  root
 
-
+def build_tree_r2(arr:list):
+    if len(arr) == 0:
+        return None
+    start = 0
+    end = len(arr) - 1
+    mid = start + (end - start) // 2
+    root = TreeNode(val= arr[mid])
+    root.right = build_tree_r2(arr[mid+1:])
+    root.left = build_tree_r(arr[:mid])
+    return root
 

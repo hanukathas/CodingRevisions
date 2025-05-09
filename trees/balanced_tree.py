@@ -48,5 +48,23 @@ def is_balanced_tree(leaf: TreeNode, result: bool):
         result = False
     return abs(right_height - left_height)
 
+def is_balanced_works(root: TreeNode):
+    if not root:
+        return True
+    result = [True]
+    def helper(leaf: TreeNode):
+        left_height = 0
+        right_height = 0
+        left_height = helper(leaf.left)
 
+        right_height = helper(leaf.right)
+
+        if abs(left_height - right_height) > 1:
+            result = [False]
+
+        return max(left_height, right_height) + 1
+        # return this to go up;
+        # +1 for the height above this
+    helper(root)
+    return result
 

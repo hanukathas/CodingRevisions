@@ -41,6 +41,20 @@ def binary_tree_tile_r(leaf: TreeNode, tile: list):
 
     return left_sum + right_sum + leaf.val
 
+def binary_tree_tile_r2(leaf: TreeNode, tile: list):
+    left_sum = 0
+    right_sum = 0
+    if leaf.left is not None:
+        left_sum = binary_tree_tile_r2(leaf.left, tile)
+    if leaf.right is not None:
+        right_sum = binary_tree_tile_r2(leaf.right, tile)
+    tile.append(abs(right_sum - left_sum))
+    return leaf.val + left_sum + right_sum
+
+
+
+
+
 
 
 
