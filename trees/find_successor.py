@@ -45,3 +45,23 @@ def find_successor_revision(node: TreeNode, root: TreeNode):
             else:
                 curr = curr.right
         return ancestor
+
+def working_solution(p: TreeNode, root: TreeNode):
+    if p.right:
+        curr = p.right
+        while curr:
+            if curr.left is None:
+                return curr
+            curr = curr.left
+
+    curr = root
+    ancestor = None
+    while curr:
+        if p.val < curr.val:
+            ancestor = curr
+            curr = curr.left
+        else:
+            curr = curr.right
+    return ancestor
+
+

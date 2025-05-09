@@ -41,11 +41,11 @@ def vertical_order_position_traversal(root: TreeNode):# position of element at r
 
     def helper(leaf: TreeNode, x:int, y:int):
         if x not in result:
-            result[0] = {}
+            result[x] = {}
             if y not in result[x]:
                 result[x][y] = [leaf.val]
             else:
-                result[x][y].append(leaf.val)
+                result[x][y].add(leaf.val)
 
         if leaf.left:
             helper(leaf.left, x-1, y+1)
@@ -56,5 +56,21 @@ def vertical_order_position_traversal(root: TreeNode):# position of element at r
 
     return result
 
-
+def vertical_order_position_traversal_r(root: TreeNode):
+    if not root:
+        return []
+    result = []
+    def traversal(leaf, x, y):
+        if x not in result:
+            result[0] = {}
+            if y not in result[x]:
+                result[x][y] = [leaf.val]
+            else:
+                result[x][y].append(leaf.val)
+        if leaf.left is not None:
+            traversal(leaf.left, x - 1, y + 1)
+        if leaf.right is not None:
+            traversal(leaf.left, x + 1, y + 1)
+    traversal(root, 0, 0)
+    return result
 

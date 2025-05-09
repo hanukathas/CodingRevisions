@@ -20,6 +20,25 @@ def print_all_paths(root: TreeNode):
     helper(root, [])
     return result
 
+def print_all_paths_r(root: TreeNode):
+    """
+    print all path from a given node
+    note: when you append to a slate, pop too at the end
+    :param root:
+    :return:
+    """
+    result = []
+    def printer(leaf: TreeNode, slate: []):
+        slate.append(leaf.val)
+        if leaf.right is None and leaf.left is None:
+            result.append(slate[:])
+        if leaf.left is not None:
+            print(leaf.left, slate)
+        if leaf.right is not None:
+            print(leaf.right, slate)
+        slate.pop()
+    return result
+
 def longest_path(root: TreeNode):
     if not root:
         return []

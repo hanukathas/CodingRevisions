@@ -3,6 +3,7 @@ from trees.tree_node import TreeNode
 
 def largest_bst_subtree(root: TreeNode):
     """
+    https://leetcode.com/problems/largest-bst-subtree/
     1. a leaf is a BST if it has left and right leaves
     2. is this is true: left leaf value < leaf value < right leaf value
     3. if 1 and 2 are true then size = size + 1
@@ -41,3 +42,44 @@ def largest_bst_subtree(root: TreeNode):
 
     largest_bst_subtree_helper(root)
     return largest_bst_subtree_result[0]
+
+
+def largest_bst_subtree_r_works(root: TreeNode):
+    """
+    https://leetcode.com/problems/largest-bst-subtree/
+    top - bottom traversal
+    :param root:
+    :return:
+    """
+    if not root:
+        return root
+
+    largest_st = [1]
+    def get_largest(leaf: TreeNode):
+        size = 1 # one more lower level
+        smallest = leaf.val
+        largest = leaf.val
+        is_bst = True
+
+        if leaf.left is None and leaf.right is None:
+            pass
+        if leaf.left is not None:
+            left_size, s, l, bst = get_largest(leaf.left)
+            smallest = min(smallest, s)
+            largest = max(largest, l)
+            size += left_size
+            if not bst or l > leaf.val:
+                is_bst = False
+        if leaf.right is not None:
+            right_size, s, l, bst = get_largest(leaf.right)
+            smallest = min(smallest, s)
+            largest = max(largest, l)
+            size += right_size
+            if not bst or s < leaf.val:
+                is_bst = False
+            if size > largest_st[0]:
+                largest_st[0] = size
+            return size, smallest, largest, is_bst
+
+    get_largest(root)
+    return largest_st

@@ -42,3 +42,24 @@ def longest_uni_value_path(root: TreeNode):
 
     longest_uni_value_path_helper(root)
     return longest_uni_value_path_result[0]
+
+def longest_uni_value_path_r(root: TreeNode):
+    longest_path_r = [0]
+    def uni_value_path_length(leaf: TreeNode):
+        left_length = 0
+        right_length = 0
+        total_length = 0
+        if leaf.right is None and leaf.left is None:
+            pass
+        if leaf.left is not None and leaf.left.val == leaf.val:
+            left_length = 1 + uni_value_path_length(leaf.left)
+            total_length = left_length
+        if leaf.right is not None and leaf.right.val == leaf.val:
+            right_length = 1 + uni_value_path_length(leaf.left)
+            total_length = total_length + right_length
+        longest = max(left_length, right_length)
+        longest_path_r[0] = max(longest_path_r[0], total_length)
+        return longest
+
+
+

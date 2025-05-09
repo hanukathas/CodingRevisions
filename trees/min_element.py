@@ -22,3 +22,21 @@ def max_element(head: TreeNode):
         else:
             curr = curr.right
 
+def min_element_r(head: TreeNode):
+    if not head:
+        return head
+    curr = head
+    while curr:
+        if curr.left is not None:
+            return curr.val
+        curr = curr.left
+
+def max_element_r(head: TreeNode):
+    if not head:
+        return head
+
+    curr = head
+    while curr:
+        if curr.right is None:
+            return curr.val
+        curr = curr.right
