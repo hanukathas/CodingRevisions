@@ -39,6 +39,22 @@ def upside_down_bfs(root: TreeNode):
             queue.append([(old_left, leaf, old_right)])
     return upside_down_root
 
+def upside_down_r(root: TreeNode):
+    if not root:
+        return None
+    global_root = [root]
+    def helper(leaf: TreeNode, parent: TreeNode, right:TreeNode):
+        old = TreeNode(val=0)
+        old.left = leaf.left
+        old.right = leaf.right
+        leaf.left = right
+        leaf.right = parent
+        global_root[0] = leaf
+        if old.left is not None:
+            helper(old.left, leaf, old.right)
+    helper(root, None, None)
+    return global_root[0]
+
 
 
 

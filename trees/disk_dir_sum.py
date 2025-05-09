@@ -16,3 +16,16 @@ def disk_dir_sum(root: TreeNode) -> int:
     if root.left:
         du += disk_dir_sum(root=root.left)
     return du
+
+def disk_dir_sum_r(root: TreeNode) -> int:
+    if root is None:
+        return 0
+    def sum_helper(leaf: TreeNode):
+        du = leaf.val
+        if leaf.left is not None:
+            du += sum_helper(leaf.left)
+        if leaf.right is not None:
+            du += sum_helper(leaf.right)
+        return du
+    sum_helper(root)
+

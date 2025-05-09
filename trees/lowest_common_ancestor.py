@@ -2,23 +2,13 @@ from leetcode.blackline.level_order_traversal import TreeNode
 
 
 def lowest_common_ancestor(root: TreeNode, p: TreeNode, q: TreeNode):
-    found = [None]
-    def helper(leaf: TreeNode):
-        pfound = False
-        qfound = False
-        if leaf == p:
-            pfound = True
-        if leaf == q:
-            qfound = True
-        if leaf.right is None and leaf.left is None:
-            pass
-        if leaf.left is not None:
-            pf,qf = helper(leaf.left)
-            pfound = pf or pfound
-            qfound = qf or qfound
-        if pfound and qfound and found[0] is None:
-            found[0] = leaf
-        return pfound, qfound
+    if not root or root == p or root == q:
+        return root
 
-    helper(root)
-    return found
+    left = lowest_common_ancestor(root.left, p, q)
+    right = lowest_common_ancestor(root.right, p, q)
+
+    if left and right:
+        return root
+
+    return left if left else right

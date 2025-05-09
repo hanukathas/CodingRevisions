@@ -30,3 +30,23 @@ def max_path_sum(root: TreeNode):
 
     max_path_sum_helper(root)
     return max_path_sum_result
+
+def max_path_sum_r(root: TreeNode):
+    if not root:
+        return None
+
+    max_sum = [0]
+    target = 0
+    def calculate_max_sum(leaf: TreeNode):
+        max_left_sum = 0
+        max_right_sum = 0
+        if leaf.left is not None:
+            max_left_sum = calculate_max_sum(leaf.left)
+        if leaf.right is not None:
+            max_right_sum = calculate_max_sum(leaf.right)
+        max_local_sum = max(leaf.val + max_left_sum, leaf.val + max_right_sum, max_left_sum + max_right_sum)
+        max_sum[0] = max(max_local_sum, max_sum[0])
+        return max_local_sum
+
+    calculate_max_sum(root)
+    return max_sum
