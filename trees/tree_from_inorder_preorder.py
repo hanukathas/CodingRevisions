@@ -4,7 +4,7 @@ from trees.tree_node import TreeNode
 def tree_from_inorder_preorder(in_order: list, pre_order: list):
     if len(in_order) == 0 or len(pre_order) == 0:
         return TreeNode(val=-1)
-    hmap = {}
+    hmap = {} # optimize to get the indexes
     for i in range(len(in_order)):
         hmap[in_order[i]] = i
 
