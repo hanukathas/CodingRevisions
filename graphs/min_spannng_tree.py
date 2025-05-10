@@ -70,7 +70,7 @@ def min_spanning_tree_prim(n: int, matrix: list):
         adj_list[v].append((u, w))
     captured = [False] * n
     captured[0] = True
-    pq = heapq
+    pq = []
     total_cost = 0
     for u,w in adj_list[0]:
         heapq.heappush(pq, (u,w))
@@ -83,7 +83,7 @@ def min_spanning_tree_prim(n: int, matrix: list):
         total_cost += weight
         for neighbor, cost in adj_list[vertex]:
            if not captured[neighbor]:
-               pq.heappush((neighbor, cost))
+               heapq.heappush(pq, (neighbor, cost))
                captured[neighbor] = True
 
     return total_cost
