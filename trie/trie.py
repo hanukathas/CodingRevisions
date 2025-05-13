@@ -1,23 +1,25 @@
 class TrieNode:
-    def __init__(self, end = False):
+    def __init__(self, ):
         self.children = {}
-        self.is_end = end
+        self.is_end = False
 
 class Trie:
     def __init__(self):
         self.root = TrieNode()
-    def insert(self, node: TrieNode, word: str):
+    def insert(self, word: str):
         curr = self.root
         for letter in word:
-            if letter in curr.children:
-                curr = curr.children[letter]
-            curr.children[letter] = TrieNode()
+            if letter not in curr.children:
+                curr.children[letter] = TrieNode()
+            curr = curr.children[letter]
         curr.is_end = True
+
 
     def search(self, word: str):
         curr = self.root
         for letter in word:
             if letter not in curr.children:
+                print(f"letter: {letter} not there")
                 return False
             curr = curr.children[letter]
 
@@ -31,7 +33,15 @@ class Trie:
             curr = curr.children[letter]
         return True
 
-    
+if __name__ == '__main__':
+    trie = Trie()
+    trie.insert("apple")
+    trie.insert("app")
+    print(trie.search("apple"))
+    print(trie.search("app"))  # Output: True
+    print(trie.search("banana"))  # Output: False
+    print(trie.starts_with("ap"))  # Output: True
+    print(trie.starts_with("ba"))
 
 
 
