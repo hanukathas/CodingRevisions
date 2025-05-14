@@ -67,5 +67,5 @@ def phone_letter_combination_r(digits: str):
 if __name__ == '__main__':
     # print(phone_letter_combination("23"))
     # print(phone_letter_combination_revision("23"))
-    print(phone_letter_combination_revision_2("23"))
+    print(phone_letter_combination_r("23"))
     print(phone_letter_combination_r("2323"))

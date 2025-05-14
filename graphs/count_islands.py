@@ -34,3 +34,4 @@ def count_islands(matrix: list):
                 islands += 1
                 islands_bfs(i, j, matrix)
     return islands
+
