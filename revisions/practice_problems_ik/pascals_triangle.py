@@ -17,4 +17,4 @@ def find_pascal_triangle(n: int):
     return result
 
 if __name__ == '__main__':
-    print(find_pascal_triangle(1700))
+    print(find_pascal_triangle(5))

@@ -48,7 +48,7 @@ def min_cost_tickets_r(days: list, costs: list):
     for i in range(1,len(days)):
         case1 = dp[i-1] + costs[0]
 
-        j = i -1
+        j = i - 1
         while j >= 0 and days[j] >= days[i] - 6:
             j -= 1
 

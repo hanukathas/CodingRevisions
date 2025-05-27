@@ -47,6 +47,29 @@ def longestPalindrome_leetcode_soln(s: str) -> str:
             end = i + max_len // 2
 
     return s[start:end + 1]
+
+def longest_p_r(s: str):
+    if len(s) == 0:
+        return 0
+    start = 0
+    end = 0
+    def len_palindrome(left, right):
+        while left > 0 and right < len(s) and s[left] == s[right]:
+            left = left - 1
+            right = right + 1
+        return right - left - 1
+    for i in range(len(s)):
+        len1 = len_palindrome(i, i)
+        len2 = len_palindrome(i, i + 1)
+        max_len = max(len1, len2)
+        if max_len > end - start:
+            start = i - (max_len - 1) // 2
+            end = i + max_len // 2
+    return s[start:end + 1]
+
+
+
 if __name__ == '__main__':
     print(longestPalindrome_leetcode_soln("babad"))
     print(longestPalindrome("babad"))
+    print(longest_p_r("babad"))
