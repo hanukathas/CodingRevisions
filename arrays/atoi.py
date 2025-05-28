@@ -24,4 +24,30 @@ def atoi(s: str):
     return result * sign
 
 if __name__ == '__main__':
-    print(atoi("  -d042hello  "))
+    # print(atoi("  -d042hello  "))
+    # print(atoi("  -ra0420gamm  "))
+    INT_MAX = 2 ** 31 - 1
+    INT_MIN = -2 ** 31
+    word = "  -01  "
+    word = word.strip()
+    sign = 1 if word[0] != '-' else -1
+    j = 0
+    number = ""
+    while j < len(word):
+        if word[j] == '0' and number == "":
+            j += 1
+        else:
+            number += '0'
+        if word[j].isdigit():
+            if int(number) * 10 + int(word[j]) >= INT_MAX:
+                number = str(INT_MAX)
+            elif int(number) * 10 + int(word[j]) <= INT_MIN:
+                number = str(INT_MIN)
+            else:
+                number +=  word[j]
+        else:
+            print("done")
+
+
+
+

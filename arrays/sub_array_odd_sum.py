@@ -22,10 +22,11 @@ def sub_array_odd_sum(arr: list) -> int:
             hmap['odd'] += 1
         else:
             hmap['even'] += 1
-    return  total
+    return total
+
 
 def sub_array_odd_sum_r(arr: list):
-    odd_even = {0:1, 1:0}
+    odd_even = {0: 1, 1: 0}
     total = 0
     prefix = 0
 
@@ -43,6 +44,7 @@ def sub_array_odd_sum_r(arr: list):
 
     return total
 
+
 if __name__ == '__main__':
-    print(sub_array_odd_sum([1,3,5]))
+    print(sub_array_odd_sum([1, 3, 5]))
     print(sub_array_odd_sum_r([1, 3, 5, 79]))

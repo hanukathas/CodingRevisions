@@ -1,3 +1,5 @@
+from unittest.mock import right
+
 from trees.tree_node import TreeNode
 
 
@@ -67,4 +69,26 @@ def is_balanced_works(root: TreeNode):
         # +1 for the height above this
     helper(root)
     return result
+
+def is_balanced_tree_r(root: TreeNode):
+    if not root:
+        return None
+
+    def is_balanced_leaf(leaf: TreeNode):
+        if leaf.left is None and leaf.right is None:
+            pass
+        left_level, right_level  = 0, 0
+        if leaf.left is not None:
+            left_level = is_balanced_leaf(leaf.left)
+            if left_level > 1: return -1
+        if leaf.right is not None:
+            right_level = is_balanced_leaf(leaf.right)
+            if right_level > 1: return -1
+        if abs(left_level - right_level) > 1:
+            return -1
+        return max(left_level, right_level) + 1
+
+
+
+    return is_balanced_leaf(root) != -1
 

@@ -64,6 +64,23 @@ def kthSmallest(self, root: TreeNode, k: int) -> int:
 
         curr = curr.right
 
+def k_smallest_element(root: TreeNode, k: int):
+    stack = []
+    curr = root
+
+    while curr or stack: # perform in order traversal
+        while curr: # left traversal
+            stack.append(curr) # keep adding elements as we traverse
+            curr = curr.left
+        curr = stack.pop()
+        k -= 1
+        if k == 0:
+            return curr.val
+
+        curr = curr.right
+
+
+
 
 
 

@@ -1,11 +1,11 @@
-def card_points(arr, k):
-    min_sum = sum(arr[:k])
+def card_points(cardPoints, k):
+    min_sum = sum(cardPoints[:k])
     running_sum = min_sum
-    for i in range(k, len(arr)):
-        running_sum += arr[i] - arr[i - k]
+    for i in range(k, len(cardPoints)):
+        running_sum += cardPoints[i] - cardPoints[i - k]
         print(min_sum, running_sum)
         min_sum = min(running_sum, min_sum)
-    return sum(arr) - min_sum
+    return sum(cardPoints) - min_sum
 
 def card_points_revision(arr, k):
     n = len(arr)

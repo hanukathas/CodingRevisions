@@ -13,10 +13,10 @@ def max_diameter_tree(root: TreeNode):
         left_diameter = right_diameter = 0
         if node.left is not None:
             left_diameter = helper(node.left)
-            diameter += left_diameter + 1
+            diameter += left_diameter
         if node.right is not None:
             right_diameter = helper(node.right)
-            diameter += right_diameter + 1
+            diameter += right_diameter
         result[0] = max(result[0], diameter)
         return max(left_diameter, right_diameter) + 1
 
