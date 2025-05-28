@@ -41,7 +41,7 @@ def diet_plan_revision(arr:list, size: int, upper: int, lower: int):
     return performance
 
 if __name__ == '__main__':
-    # print(diet_plan([1,2,3,4,5], 1, 3, 3))
+    print(diet_plan([1,2,3,4,5], 1, 3, 3))
     print(diet_plan_revision([6,5,0,0], 2, 4, 4))
 
 

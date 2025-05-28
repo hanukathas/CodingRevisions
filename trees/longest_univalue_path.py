@@ -1,65 +1,69 @@
 from trees.tree_node import TreeNode
 
-
 def longest_uni_value_path(root: TreeNode):
     """
-    1. if I am a leaf, and have children then:
-        a. I could be part of the longest path
-        b. my children are part of the longest path
-        c. my children are not part of the longest path, but I am
-        d. neither me nor my children are part of the longest path
-    2. if b is true, a global value has that value
-    3. if both leaf and children are part, and recursively then add the size
-    4. if I am part and the children are not then its just me
-    5. note, need to take of the left and right separately, as one of them could be
-    :param root:
-    :return:
+    Returns the length of the longest path where all nodes have the same value.
+    The path may or may not pass through the root.
     """
     if not root:
-        return 1
-    longest_uni_value_path_result = list()
-    longest_uni_value_path_result[0] = 1
+        return 0  # An empty tree has path length 0
 
-    def longest_uni_value_path_helper(leaf: TreeNode):
-        longest_path = 0 # calculate the longest univalue path depth from here
-        longest_v_path = 0 # calculate the inverted v path
-        if leaf.right is None and leaf.left is None:
-            pass # can't do anything on a leaf node
-        if leaf.left is not None:
-            longest_left_path = longest_uni_value_path_helper(leaf.left)
-            if leaf.left.val == leaf.val:
-                longest_path = 1 + longest_left_path
-                longest_v_path = longest_path # left of the tree is going to be the same
-        if leaf.right is not None:
-            longest_right_path = longest_uni_value_path_helper(leaf.right)
-            if leaf.right.val == leaf.val:
-                longest_path = max(longest_path, 1 + longest_right_path)
-                longest_v_path += 1 + longest_right_path #left path + right path
+    result = [0]  # Mutable container to store the global maximum path length
 
-        longest_uni_value_path_result[0] = max(longest_uni_value_path_result[0], longest_v_path)
-        return longest_path # this is the depth
+    def helper(node):
+        if not node:
+            return 0  # Base case: no path from a null node
 
+        # Recursively get the longest univalue path for left and right children
+        left = helper(node.left)
+        right = helper(node.right)
 
-    longest_uni_value_path_helper(root)
-    return longest_uni_value_path_result[0]
+        left_path = right_path = 0  # Paths starting from this node
 
-def longest_uni_value_path_r(root: TreeNode):
-    longest_path_r = [0]
-    def uni_value_path_length(leaf: TreeNode):
-        left_length = 0
-        right_length = 0
-        total_length = 0
-        if leaf.right is None and leaf.left is None:
-            pass
-        if leaf.left is not None and leaf.left.val == leaf.val:
-            left_length = 1 + uni_value_path_length(leaf.left)
-            total_length = left_length
-        if leaf.right is not None and leaf.right.val == leaf.val:
-            right_length = 1 + uni_value_path_length(leaf.left)
-            total_length = total_length + right_length
-        longest = max(left_length, right_length)
-        longest_path_r[0] = max(longest_path_r[0], total_length)
-        return longest
+        # If left child exists and has the same value, extend the left path
+        if node.left and node.left.val == node.val:
+            left_path = left + 1
+
+        # If right child exists and has the same value, extend the right path
+        if node.right and node.right.val == node.val:
+            right_path = right + 1
+
+        # Update the global result: the longest path through this node
+        result[0] = max(result[0], left_path + right_path)
+
+        # Return the longest single path (either left or right) to parent
+        return max(left_path, right_path)
+
+    helper(root)
+    return result[0]
+
+def uni_value_tree(root: TreeNode):
+    if not root:
+        return True
+
+    max_size = [0]
+    def helper(leaf: TreeNode):
+        if not leaf:
+            return 0
+
+        left_size = helper(leaf.left)
+        right_size = helper(leaf.right)
 
 
+    return max_size
 
+if __name__ == "__main__":
+    # Example usage:
+    # Constructing a tree:
+    #       5
+    #      / \
+    #     4   5
+    #    / \
+    #   1   1
+    root = TreeNode(5)
+    root.left = TreeNode(5)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(5)
+    root.left.right = TreeNode(5)
+
+    print(longest_uni_value_path(root))  # Output: 2 (the path 4 -> 5 or 5 -> 5)

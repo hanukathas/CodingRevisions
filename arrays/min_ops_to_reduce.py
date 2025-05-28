@@ -33,6 +33,12 @@ def min_ops_to_reduce_revision(arr: list, k: int):
     return min_ops if min_ops == -1 else len(arr) - min_ops
 
 def min_ops_to_reduce_r(arr: list, k: int):
+    """
+    https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/description/
+    :param arr:
+    :param k:
+    :return:
+    """
     required_sum = sum(arr) - k
     running_sum = 0
     left = 0
@@ -49,4 +55,4 @@ def min_ops_to_reduce_r(arr: list, k: int):
 
 if __name__ == '__main__':
     print(min_ops_to_reduce([9], 5))
-    print(min_ops_to_reduce_r([3, 1, 4, 2, 3], 5))
+    print(min_ops_to_reduce_r([1, 1, 4, 2, 3], 5))

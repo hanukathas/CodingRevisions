@@ -7,7 +7,7 @@ def fruits_into_baskets(arr: list):
             hmap[arr[i]] += 1
         else:
             hmap[arr[i]] = 1
-        while left <= 1 and len(hmap) > 2:
+        while left <= i and len(hmap) > 2:
             hmap[arr[left]] -= 1
             if hmap[arr[left]] == 0:
                 hmap.pop(arr[left])

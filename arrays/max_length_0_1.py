@@ -34,14 +34,32 @@ def max_length_0_1_r(nums: list):
             hmap[excess] = 1
     return max_size
 
+def max_length_r2(nums: list):
+    hmap = {}
+    excess = 1 if nums[0] == 0 else -1
+    hmap[excess] = 0
+    print(f"excess:{excess}")
+    max_val = 0
+    for i in range(1, len(nums)):
+        if nums[i] == 0:
+            excess += 1
+        else:
+            excess -= 1
+        print(f"excess:{excess}")
+        if excess in hmap:
+            max_val = max(max_val, i + 1 - hmap[excess])
+        hmap[excess] = i
+        print(hmap)
+    return max_val
 
 if __name__ == '__main__':
+    print(max_length_r2([0, 1, 1, 0, 1, 1, 0]))
     # print(max_length_0_1([0, 1]))
     # print(max_length_0_1([0, 1, 0]))
     # print(max_length_0_1([0, 1, 1, 1]))
     # print(max_length_0_1([0, 1, 1, 1, 0]))
 
-    print(max_length_0_1_r([0, 1]))
-    print(max_length_0_1_r([0, 1, 0]))
-    print(max_length_0_1_r([0, 1, 0, 1]))
-    print(max_length_0_1_r([0, 1, 1, 1, 0]))
+    # print(max_length_r2([0, 1]))
+    # print(max_length_r2([0, 1, 0]))
+    # print(max_length_r2([0, 1, 0, 1]))
+

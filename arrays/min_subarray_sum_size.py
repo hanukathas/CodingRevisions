@@ -49,5 +49,5 @@ def min_subarray_sum_size_revision_2(arr: list, s: int):
 if __name__ == '__main__':
     # print(min_subarray_sum_size([4,8,2,6,1,5,11], 10))
     print(min_subarray_sum_size_revision([2,3,1,2,4,3], 8))
-    print(min_subarray_sum_size_revision_2([8, 2, 3, 1, 2, 4, 3], 8))
+    print(min_subarray_sum_size_revision_2([2, 3, 1, 2, 4, 3], 8))
 
