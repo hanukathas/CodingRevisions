@@ -63,6 +63,8 @@ def kthSmallest(self, root: TreeNode, k: int) -> int:
             return curr.val
 
         curr = curr.right
+    return None
+
 
 def k_smallest_element(root: TreeNode, k: int):
     stack = []
@@ -78,6 +80,7 @@ def k_smallest_element(root: TreeNode, k: int):
             return curr.val
 
         curr = curr.right
+    return None
 
 
 

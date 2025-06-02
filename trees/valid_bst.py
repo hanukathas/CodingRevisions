@@ -1,16 +1,19 @@
 from trees.tree_node import TreeNode
 
-def valid_bst_recursive(root: TreeNode):
-    if root is None:
+def valid_bst(root: TreeNode):
+    if not root:
         return True
 
     min_val = float('-inf')
     max_val = float('inf')
 
-    def valid_bst_recursive_helper(leaf: TreeNode, min_val: float, max_val:float):
+    def bst_validator(leaf, left_val, right_val):
         if leaf is None:
             return True
-        if leaf.val < min_val or leaf.val > max_val:
+        if (not left_val <= leaf.val < right_val
+                or not left_val < leaf.val <= right_val):
             return False
-        return valid_bst_recursive_helper(leaf.left, min_val, leaf.val) and valid_bst_recursive_helper(leaf.right, leaf.val, max_val)
-    return valid_bst_recursive_helper(root, min_val, max_val)
+        return (bst_validator(leaf.left, min_val, leaf.val)
+                and bst_validator(leaf.right, leaf.val, max_val))
+
+    return bst_validator(root, min_val, max_val)

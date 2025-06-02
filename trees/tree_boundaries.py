@@ -1,56 +1,35 @@
 from trees.tree_node import TreeNode
 
-
 def tree_boundaries(root: TreeNode):
-    """
-    understanding the problem is important
-    1. construct the left boundary
-    2. construct and append the leaves
-    3. construct and append the right boundary
-
-    very difficult to do it one loop, do it in 3 loops
-
-    we pop the last node because it's a leaf
-    :param root:
-    :return:
-    """
     if root is None:
-        return root
+        return []
 
-    # get the left boundary first
-    left_boundary = [root.val]
+    def is_leaf(node):
+        return node.left is None and node.right is None
 
-    if root.left is not None:
-        curr = root.left
-        while curr is not None:
+    left_boundary = []
+    curr = root.left
+    while curr:
+        if not is_leaf(curr):
             left_boundary.append(curr.val)
-            if curr.left is not None:
-                curr = curr.left
-            else:
-                curr = curr.right
-        # pop the leaf
-        left_boundary.pop()
+        curr = curr.left if curr.left else curr.right
 
     right_boundary = []
-    if root.right is not None:
-        curr = root.right
-        while curr is not None:
+    curr = root.right
+    while curr:
+        if not is_leaf(curr):
             right_boundary.append(curr.val)
-            if curr.right is not None:
-                curr = curr.right
-            else:
-                curr = curr.right
-        right_boundary.pop()  # pop the leaf at the end
+        curr = curr.right if curr.right else curr.left
+
     leaves = []
-    def helper(leaf: TreeNode):
-        if leaf.right is None and leaf.left is None:
-            leaves.append(leaf.val)
-        if leaf.left is not None:
-            helper(leaf.left)
-        if leaf.right is not None:
-            helper(leaf.right)
-    helper(root)
+    def dfs(node):
+        if node is None:
+            return
+        if is_leaf(node):
+            leaves.append(node.val)
+        else:
+            dfs(node.left)
+            dfs(node.right)
+    dfs(root)
 
-    return left_boundary + leaves + right_boundary
-
-
+    return [root.val] + left_boundary + [v for v in leaves if v not in left_boundary and v not in right_boundary] + right_boundary[::-1]

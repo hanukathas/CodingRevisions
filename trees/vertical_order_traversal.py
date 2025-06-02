@@ -74,3 +74,27 @@ def vertical_order_position_traversal_r(root: TreeNode):
     traversal(root, 0, 0)
     return result
 
+def vertical_traversal_r(root: TreeNode):
+    """
+    each vertex value is a tuple of level and vertex
+    :param root:
+    :return:
+    """
+    if not root:
+        return {}
+
+    traversal = defaultdict(list)
+
+    def helper(leaf: TreeNode, posn, level):
+        if not leaf:
+            return
+        traversal[posn].append((level, leaf.val))
+
+        if leaf.left is not None:
+            helper(leaf.left, posn - 1, level + 1)
+        if leaf.right is not None:
+            helper(leaf.right, posn + 1, level + 1)
+
+    helper(root, 0, 0)
+    return traversal
+

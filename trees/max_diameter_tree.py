@@ -40,10 +40,10 @@ def max_diameter_r(root: TreeNode):
         right_diameter = 0
         if leaf.left is not None:
             left_diameter = diameter_calculator(leaf.left)
-            diameter = 1 + left_diameter
+            diameter = left_diameter
         if leaf.right is not None:
             right_diameter = diameter_calculator(leaf.right)
-            diameter += 1 + right_diameter
+            diameter += right_diameter
         max_d[0] = max(max_d[0], diameter)
         return max(left_diameter, right_diameter) + 1 # add 1 for self diameter
     diameter_calculator(root)
