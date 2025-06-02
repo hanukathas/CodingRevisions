@@ -1,4 +1,4 @@
-from leetcode.blackline.level_order_traversal import TreeNode
+from company_specific.blackline.level_order_traversal import TreeNode
 
 
 def lowest_common_ancestor(root: TreeNode, p: TreeNode, q: TreeNode):

@@ -73,7 +73,7 @@ def lcs_bottom_up_r(str1, str2):
 
 if __name__ == '__main__':
     # print(lcs_bottom_up("hello", "ell"))
-    # https: // leetcode.com / problems / longest - common - subsequence / description /
-    print(lcs_bottom_up("leetcode", "cod"))
+    # https: // company_specific.com / problems / longest - common - subsequence / description /
+    print(lcs_bottom_up("company_specific", "cod"))
     print(lcs_bottom_up("beautybb", "b"))
 

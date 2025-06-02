@@ -1,6 +1,6 @@
 from contextlib import nullcontext
 
-from leetcode.blackline.level_order_traversal import TreeNode
+from company_specific.blackline.level_order_traversal import TreeNode
 
 
 def find_successor(node: TreeNode, root: TreeNode):

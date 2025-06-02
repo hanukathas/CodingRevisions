@@ -1,7 +1,7 @@
 import queue
 from collections import deque
 
-from leetcode.blackline.level_order_traversal import TreeNode
+from company_specific.blackline.level_order_traversal import TreeNode
 
 
 def deserialize_tree(arr: deque):
