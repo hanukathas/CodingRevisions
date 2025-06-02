@@ -6,7 +6,7 @@ def min_spannng_tree(n: int, matrix: list):
 
 def min_spanning_tree_kruskal(n: int, matrix: list):
     """
-    leetcode: https://leetcode.com/problems/connecting-cities-with-minimum-cost/description/?envType=problem-list-v2&envId=minimum-spanning-tree
+    company_specific: https://leetcode.com/problems/connecting-cities-with-minimum-cost/description/?envType=problem-list-v2&envId=minimum-spanning-tree
     proof by contradiction:
     -> another spanning tree that is constructed is minimum spanning tree
     if weights till edge i - 1 matches and does not match for edge i

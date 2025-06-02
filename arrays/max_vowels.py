@@ -31,4 +31,4 @@ def max_vowels_of_length_k_r(s: str, k: int):
 
 
 if __name__ == '__main__':
-    print(max_vowels_of_length_k("leetcode", 3))
+    print(max_vowels_of_length_k("company_specific", 3))

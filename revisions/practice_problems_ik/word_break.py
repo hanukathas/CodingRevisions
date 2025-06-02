@@ -51,5 +51,5 @@ def word_break_revision(words: list, word: str):
 
 if __name__ == '__main__':
     print(word_break(['sugar','dad', 'dy'], 'sugardaddy'))
-    print(word_break(["leet","code"], 'leetcode'))
+    print(word_break(["leet","code"], 'company_specific'))
     print(word_break_revision(['sugar', 'dad', 'dy'], 'sugardaddy'))
