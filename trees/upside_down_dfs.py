@@ -1,62 +1,27 @@
-from collections import deque
-
 from trees.tree_node import TreeNode
-
 
 def upside_down_dfs(root: TreeNode):
     if not root:
         return None
-    global_root = list()
-    def upside_down_dfs_helper(leaf: TreeNode, parent: TreeNode, righ_leaf: TreeNode):
+
+    root_index = [root]
+
+    def build_upside_down(leaf: TreeNode, right_leaf: TreeNode, parent: TreeNode):
         if leaf.left is None and leaf.right is None:
-            global_root[0] = leaf
-
+            root_index[0] = leaf
         old_left = leaf.left
         old_right = leaf.right
-        leaf.left = righ_leaf
+
+        leaf.left = right_leaf
         leaf.right = parent
 
-        if old_left is not None:
-            upside_down_dfs_helper(old_left, leaf, old_right)
-    # here we send the root, and then the subsequent recursions will handle the rotation
-    upside_down_dfs_helper(root, None, None)
-    return global_root[0]
-
-def upside_down_bfs(root: TreeNode):
-    if not root:
-        return None
-    queue = deque()
-    queue.append([(root, None, None)])
-    upside_down_root = list()
-    while len(queue) > 0:
-        leaf, parent, right_sibling = queue.popleft()
-        upside_down_root = leaf
-        old_left = leaf.left
-        old_right = leaf.right
-        leaf.left = right_sibling
-        leaf.right = parent
-        if old_left is not None:
-            queue.append([(old_left, leaf, old_right)])
-    return upside_down_root
-
-def upside_down_r(root: TreeNode):
-    if not root:
-        return None
-    global_root = [root]
-    def helper(leaf: TreeNode, parent: TreeNode, right:TreeNode):
-        old = TreeNode(val=0)
-        old.left = leaf.left
-        old.right = leaf.right
-        leaf.left = right
-        leaf.right = parent
-        global_root[0] = leaf
-        if old.left is not None:
-            helper(old.left, leaf, old.right)
-    helper(root, None, None)
-    return global_root[0]
+        if old_left:
+            build_upside_down(old_left, old_right, leaf)
 
 
 
+    build_upside_down(root, None, None)
 
+    return root_index[0]
 
 
