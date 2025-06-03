@@ -10,6 +10,9 @@ def set_mismatch(arr: list):
     for i in range(len(arr)):
         if arr[i] != i+1:
             return arr[i], i+1
+        return None
+    return None
+
 
 if __name__ == '__main__':
     print(set_mismatch([1,2,2,4]))

@@ -20,6 +20,7 @@ def robot_move(moves: str):
                 return x, y - 1, d
             if d == 3:
                 return x - 1, y, d
+            return None
 
     for i in moves:
         x_point, y_point, direction = simulate(x_point, y_point, direction, i)
