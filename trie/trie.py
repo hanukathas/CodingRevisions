@@ -33,6 +33,34 @@ class Trie:
             curr = curr.children[letter]
         return True
 
+class TrieR:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word: str):
+        curr = self.root
+        for letter in word:
+            if letter not in curr:
+                curr.children[letter] = TrieNode()
+            curr = curr.children[letter]
+        curr.is_end = True
+
+    def search(self, word: str):
+        curr = self.root
+        for letter in word:
+            if letter not in curr:
+                return False
+            curr = curr.children[letter]
+        return curr.is_end
+
+    def starts_with(self, word):
+        curr = self.root
+        for letter in word:
+            if letter not in curr:
+                return False
+            curr = curr.children[letter]
+        return True
+
 if __name__ == '__main__':
     trie = Trie()
     trie.insert("apple")
