@@ -1,25 +1,61 @@
-def gas_stations(gas:list, cost:list):
-    """
-        1. start from the place where gas - cost is minimum.
-        2. 1 gives the worst case scenario
-    :param gas:
-    :param cost:
-    :return:
-    """
-    to_start = 0
-    min_val = gas[0] - cost[0]
-    running_sum = 0
-    for i in range(1, len(gas)):
-        running_sum += gas[i] - cost[i]
-        if min_val < gas[i] - cost[i]:
-            to_start = (i + 1) % len(gas)
-            min_val = gas[i] - cost[i]
-
-    if running_sum < 0:
+def gas_stations_r(gas: list, cost: list):
+    total_tank = 0
+    curr_tank = 0
+    start = 0
+    for i in range(len(gas)):
+        total_tank += gas[i] - cost[i]
+        curr_tank += gas[i] - cost[i]
+        if curr_tank < 0:
+            start = i + 1
+            curr_tank = 0
+    if total_tank < 0:
         return -1
     else:
-        return to_start
+        return start
+
+def gas_stations(gas: list, cost: list):
+    net_travel = 0
+    cur_segment = 0
+    start_from = 0
+
+    if len(gas) != len(cost):
+        return -1
+
+    for station in range(len(gas)):
+        net_travel += gas[station] - cost[station]
+        cur_segment += gas[station] - cost[station]
+        if cur_segment < 0:
+            start_from = (station + 1) % len(gas)
+            cur_segment = 0
+    if net_travel < 0:
+        return -1
+    else:
+        return start_from
 
 
+if __name__ == "__main__":
+    # Test case 1: Possible to complete circuit
+    gas = [1,2,3,4,5]
+    cost = [3,4,5,1,2]
+    print(gas_stations(gas, cost))  # Expected: 3
 
+    # Test case 2: Not possible to complete circuit
+    gas = [2,3,4]
+    cost = [3,4,3]
+    print(gas_stations(gas, cost))  # Expected: -1
+
+    # Test case 3: All stations have enough gas
+    gas = [5,1,2,3,4]
+    cost = [4,4,1,5,1]
+    print(gas_stations(gas, cost))  # Expected: 4
+
+    # Test case 4: Only one station
+    gas = [5]
+    cost = [4]
+    print(gas_stations(gas, cost))  # Expected: 0
+
+    # Test case 5: Empty input
+    gas = []
+    cost = []
+    print(gas_stations(gas, cost))  # Expected: 0 or -1 depending on interpretation
 

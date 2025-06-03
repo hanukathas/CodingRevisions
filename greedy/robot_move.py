@@ -30,8 +30,35 @@ def robot_move(moves: str):
     else:
         return True
 
+def robot_move_r(moves: str):
+    x, y, dir = 0, 0, 0
+
+    def curr_position(x, y, d, move):
+        if move == 'R':
+            return x, y, (d + 1) % 4
+        elif move == 'L':
+            return x, y, (d - 1) % 4
+        else:
+            if d == 0:
+                return x , y + 1, d
+            elif d == 2:
+                return x, y - 1, d
+            elif d == 1:
+                return x + 1, y, d
+            else:
+                return x - 1, y, d
+
+    for i in moves:
+        x, y, dir = curr_position(x, y, dir, i)
+    print(x, y, dir)
+    if (x, y) != (0, 0) and dir == 0:
+        return False
+    else:
+        return True
+
+
 if __name__ == '__main__':
-    print(robot_move('GG'))
+    print(robot_move_r('LL'))
 
 
 
