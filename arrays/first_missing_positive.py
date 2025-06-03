@@ -15,6 +15,9 @@ def first_missing_positive(arr: list):
     for i in range(len(arr)):
         if i+1 != arr[i]:
             return i+1
+        return None
+    return None
+
 
 def first_missing_positive_r(arr: list):
     for i in range(len(arr)):
